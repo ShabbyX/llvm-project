@@ -3,28 +3,28 @@ import("//build_overrides/llvm.gni")
 static_library("AppleObjCRuntime") {
   output_name = "lldbPluginAppleObjCRuntime"
   configs += [
-    "//${llvm_build_root}build:clang_code",
-    "//${llvm_build_root}build:lldb_code",
+    "//${llvm_build_root}/build:clang_code",
+    "//${llvm_build_root}/build:lldb_code",
   ]
   deps = [
-    "//${llvm_root}clang/lib/AST",
-    "//${llvm_root}lldb/source/Breakpoint",
-    "//${llvm_root}lldb/source/Core",
-    "//${llvm_root}lldb/source/Expression",
-    "//${llvm_root}lldb/source/Host",
-    "//${llvm_root}lldb/source/Interpreter",
-    "//${llvm_root}lldb/source/Plugins/ExpressionParser/Clang",
-    "//${llvm_root}lldb/source/Plugins/LanguageRuntime/CPlusPlus",
-    "//${llvm_root}lldb/source/Symbol",
-    "//${llvm_root}lldb/source/Target",
-    "//${llvm_root}lldb/source/Utility",
+    "//${llvm_build_root}/secondary/clang/lib/AST",
+    "//${llvm_build_root}/secondary/lldb/source/Breakpoint",
+    "//${llvm_build_root}/secondary/lldb/source/Core",
+    "//${llvm_build_root}/secondary/lldb/source/Expression",
+    "//${llvm_build_root}/secondary/lldb/source/Host",
+    "//${llvm_build_root}/secondary/lldb/source/Interpreter",
+    "//${llvm_build_root}/secondary/lldb/source/Plugins/ExpressionParser/Clang",
+    "//${llvm_build_root}/secondary/lldb/source/Plugins/LanguageRuntime/CPlusPlus",
+    "//${llvm_build_root}/secondary/lldb/source/Symbol",
+    "//${llvm_build_root}/secondary/lldb/source/Target",
+    "//${llvm_build_root}/secondary/lldb/source/Utility",
 
-    #"//${llvm_root}lldb/source/Plugins/TypeSystem/Clang", # 4-hop dependency cycle.
-    "//${llvm_root}llvm/lib/Support",
+    #"//${llvm_build_root}/secondary/lldb/source/Plugins/TypeSystem/Clang", # 4-hop dependency cycle.
+    "//${llvm_build_root}/secondary/llvm/lib/Support",
   ]
 
   # Reaches into Plugins/ExpressionParser/Clang.
-  include_dirs = [ "//${llvm_root}lldb/source" ]
+  include_dirs = [ "//${llvm_build_root}/secondary/lldb/source" ]
   sources = [
     "AppleObjCClassDescriptorV2.cpp",
     "AppleObjCDeclVendor.cpp",

@@ -70,7 +70,7 @@ template("compiled_action") {
                       llvm_tblgen_output_dir_suffix + "/" +
                       get_label_info(host_tool, "name")  # "/bin/" +
     deps = [ host_tool ]
-    script = "//${llvm_build_root}build/run_built_binary.py"
+    script = "//${llvm_build_root}/build/run_built_binary.py"
     args = [ rebase_path(host_executable, root_build_dir) ] + invoker.args
   }
 }

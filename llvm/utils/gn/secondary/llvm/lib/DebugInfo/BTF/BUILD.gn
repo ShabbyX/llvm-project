@@ -2,7 +2,7 @@ import("//build_overrides/llvm.gni")
 
 static_library("BTF") {
   output_name = "LLVMDebugInfoBTF"
-  deps = [ "//${llvm_root}llvm/lib/Support" ]
+  deps = [ "//${llvm_build_root}/secondary/llvm/lib/Support" ]
   sources = [
     "BTFContext.cpp",
     "BTFParser.cpp",

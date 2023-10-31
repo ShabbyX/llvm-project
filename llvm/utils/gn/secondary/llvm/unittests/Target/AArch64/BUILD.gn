@@ -1,22 +1,22 @@
 import("//build_overrides/llvm.gni")
 
-import("//${llvm_root}third-party/unittest/unittest.gni")
+import("//${llvm_build_root}/secondary/third-party/unittest/unittest.gni")
 
 unittest("AArch64Tests") {
   deps = [
-    "//${llvm_root}llvm/lib/CodeGen",
-    "//${llvm_root}llvm/lib/CodeGen/GlobalISel",
-    "//${llvm_root}llvm/lib/CodeGen/MIRParser",
-    "//${llvm_root}llvm/lib/CodeGen/SelectionDAG",
-    "//${llvm_root}llvm/lib/Support",
-    "//${llvm_root}llvm/lib/Target",
-    "//${llvm_root}llvm/lib/Target/AArch64:LLVMAArch64CodeGen",
-    "//${llvm_root}llvm/lib/Target/AArch64/MCTargetDesc",
-    "//${llvm_root}llvm/lib/Target/AArch64/TargetInfo",
-    "//${llvm_root}llvm/lib/Target/AArch64/Utils",
-    "//${llvm_root}llvm/lib/TargetParser",
+    "//${llvm_build_root}/secondary/llvm/lib/CodeGen",
+    "//${llvm_build_root}/secondary/llvm/lib/CodeGen/GlobalISel",
+    "//${llvm_build_root}/secondary/llvm/lib/CodeGen/MIRParser",
+    "//${llvm_build_root}/secondary/llvm/lib/CodeGen/SelectionDAG",
+    "//${llvm_build_root}/secondary/llvm/lib/Support",
+    "//${llvm_build_root}/secondary/llvm/lib/Target",
+    "//${llvm_build_root}/secondary/llvm/lib/Target/AArch64:LLVMAArch64CodeGen",
+    "//${llvm_build_root}/secondary/llvm/lib/Target/AArch64/MCTargetDesc",
+    "//${llvm_build_root}/secondary/llvm/lib/Target/AArch64/TargetInfo",
+    "//${llvm_build_root}/secondary/llvm/lib/Target/AArch64/Utils",
+    "//${llvm_build_root}/secondary/llvm/lib/TargetParser",
   ]
-  include_dirs = [ "//${llvm_root}llvm/lib/Target/AArch64" ]
+  include_dirs = [ "//${llvm_build_root}/secondary/llvm/lib/Target/AArch64" ]
   sources = [
     "AArch64InstPrinterTest.cpp",
     "AArch64SVESchedPseudoTest.cpp",

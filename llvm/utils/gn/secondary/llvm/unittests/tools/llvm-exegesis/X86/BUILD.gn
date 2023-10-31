@@ -1,27 +1,27 @@
 import("//build_overrides/llvm.gni")
 
-import("//${llvm_root}third-party/unittest/unittest.gni")
+import("//${llvm_build_root}/secondary/third-party/unittest/unittest.gni")
 
 unittest("LLVMExegesisX86Tests") {
   deps = [
-    "//${llvm_root}llvm/lib/DebugInfo/Symbolize",
-    "//${llvm_root}llvm/lib/MC",
-    "//${llvm_root}llvm/lib/MC/MCParser",
-    "//${llvm_root}llvm/lib/Object",
-    "//${llvm_root}llvm/lib/Support",
-    "//${llvm_root}llvm/lib/Target/X86",
+    "//${llvm_build_root}/secondary/llvm/lib/DebugInfo/Symbolize",
+    "//${llvm_build_root}/secondary/llvm/lib/MC",
+    "//${llvm_build_root}/secondary/llvm/lib/MC/MCParser",
+    "//${llvm_build_root}/secondary/llvm/lib/Object",
+    "//${llvm_build_root}/secondary/llvm/lib/Support",
+    "//${llvm_build_root}/secondary/llvm/lib/Target/X86",
 
     # Exegesis reaches inside the Target/X86 tablegen internals and must
     # depend on this Target/X86-internal build target -- and so must its
     # unittests.
-    "//${llvm_root}llvm/lib/Target/X86/MCTargetDesc",
-    "//${llvm_root}llvm/tools/llvm-exegesis/lib",
-    "//${llvm_root}llvm/tools/llvm-exegesis/lib/X86",
+    "//${llvm_build_root}/secondary/llvm/lib/Target/X86/MCTargetDesc",
+    "//${llvm_build_root}/secondary/llvm/tools/llvm-exegesis/lib",
+    "//${llvm_build_root}/secondary/llvm/tools/llvm-exegesis/lib/X86",
   ]
   include_dirs = [
     "..",
-    "//${llvm_root}llvm/lib/Target/X86",
-    "//${llvm_root}llvm/tools/llvm-exegesis/lib",
+    "//${llvm_build_root}/secondary/llvm/lib/Target/X86",
+    "//${llvm_build_root}/secondary/llvm/tools/llvm-exegesis/lib",
   ]
   sources = [
     "BenchmarkResultTest.cpp",

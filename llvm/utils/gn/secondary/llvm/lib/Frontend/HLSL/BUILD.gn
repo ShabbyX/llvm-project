@@ -3,8 +3,8 @@ import("//build_overrides/llvm.gni")
 static_library("HLSL") {
   output_name = "LLVMFrontendHLSL"
   deps = [
-    "//${llvm_root}llvm/lib/IR",
-    "//${llvm_root}llvm/lib/Support",
+    "//${llvm_build_root}/secondary/llvm/lib/IR",
+    "//${llvm_build_root}/secondary/llvm/lib/Support",
   ]
   sources = [ "HLSLResource.cpp" ]
   configs += llvm_code_override_configs_append

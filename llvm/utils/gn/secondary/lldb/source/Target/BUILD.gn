@@ -1,6 +1,6 @@
 import("//build_overrides/llvm.gni")
 
-import("//${llvm_root}lldb/utils/TableGen/lldb_tablegen.gni")
+import("//${llvm_build_root}/secondary/lldb/utils/TableGen/lldb_tablegen.gni")
 
 lldb_tablegen("TargetProperties") {
   args = [ "-gen-lldb-property-defs" ]
@@ -13,22 +13,22 @@ lldb_tablegen("TargetPropertiesEnum") {
 
 static_library("Target") {
   output_name = "lldbTarget"
-  configs += [ "//${llvm_build_root}build:lldb_code" ]
+  configs += [ "//${llvm_build_root}/build:lldb_code" ]
   deps = [
     ":TargetProperties",
     ":TargetPropertiesEnum",
 
-    #"//${llvm_root}lldb/source/Breakpoint", # FIXME: Dependency cycle
-    "//${llvm_root}lldb/source/Core",
-    "//${llvm_root}lldb/source/Core",
-    "//${llvm_root}lldb/source/Expression",
-    "//${llvm_root}lldb/source/Host",
-    "//${llvm_root}lldb/source/Interpreter",
-    "//${llvm_root}lldb/source/Plugins/Process/Utility",
-    "//${llvm_root}lldb/source/Symbol",
-    "//${llvm_root}lldb/source/Utility",
-    "//${llvm_root}llvm/lib/MC",
-    "//${llvm_root}llvm/lib/Support",
+    #"//${llvm_build_root}/secondary/lldb/source/Breakpoint", # FIXME: Dependency cycle
+    "//${llvm_build_root}/secondary/lldb/source/Core",
+    "//${llvm_build_root}/secondary/lldb/source/Core",
+    "//${llvm_build_root}/secondary/lldb/source/Expression",
+    "//${llvm_build_root}/secondary/lldb/source/Host",
+    "//${llvm_build_root}/secondary/lldb/source/Interpreter",
+    "//${llvm_build_root}/secondary/lldb/source/Plugins/Process/Utility",
+    "//${llvm_build_root}/secondary/lldb/source/Symbol",
+    "//${llvm_build_root}/secondary/lldb/source/Utility",
+    "//${llvm_build_root}/secondary/llvm/lib/MC",
+    "//${llvm_build_root}/secondary/llvm/lib/Support",
   ]
   include_dirs = [ ".." ]  # FIXME: Reaches into Plugins internals.
   sources = [

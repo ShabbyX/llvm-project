@@ -3,44 +3,44 @@ import("//build_overrides/llvm.gni")
 static_library("Clang") {
   output_name = "lldbPluginExpressionParserClang"
   configs += [
-    "//${llvm_build_root}build:clang_code",
-    "//${llvm_build_root}build:lldb_code",
+    "//${llvm_build_root}/build:clang_code",
+    "//${llvm_build_root}/build:lldb_code",
   ]
   deps = [
-    "//${llvm_root}clang/lib/AST",
-    "//${llvm_root}clang/lib/CodeGen",
-    "//${llvm_root}clang/lib/Driver",
-    "//${llvm_root}clang/lib/Edit",
-    "//${llvm_root}clang/lib/Frontend",
-    "//${llvm_root}clang/lib/Frontend/Rewrite",
-    "//${llvm_root}clang/lib/Lex",
-    "//${llvm_root}clang/lib/Parse",
-    "//${llvm_root}clang/lib/Rewrite",
-    "//${llvm_root}clang/lib/Sema",
-    "//${llvm_root}clang/lib/Serialization",
-    "//${llvm_root}lldb/source/Core",
-    "//${llvm_root}lldb/source/Expression",
-    "//${llvm_root}lldb/source/Host",
-    "//${llvm_root}lldb/source/Interpreter",
+    "//${llvm_build_root}/secondary/clang/lib/AST",
+    "//${llvm_build_root}/secondary/clang/lib/CodeGen",
+    "//${llvm_build_root}/secondary/clang/lib/Driver",
+    "//${llvm_build_root}/secondary/clang/lib/Edit",
+    "//${llvm_build_root}/secondary/clang/lib/Frontend",
+    "//${llvm_build_root}/secondary/clang/lib/Frontend/Rewrite",
+    "//${llvm_build_root}/secondary/clang/lib/Lex",
+    "//${llvm_build_root}/secondary/clang/lib/Parse",
+    "//${llvm_build_root}/secondary/clang/lib/Rewrite",
+    "//${llvm_build_root}/secondary/clang/lib/Sema",
+    "//${llvm_build_root}/secondary/clang/lib/Serialization",
+    "//${llvm_build_root}/secondary/lldb/source/Core",
+    "//${llvm_build_root}/secondary/lldb/source/Expression",
+    "//${llvm_build_root}/secondary/lldb/source/Host",
+    "//${llvm_build_root}/secondary/lldb/source/Interpreter",
 
-    #"//${llvm_root}lldb/source/Plugins/Language/CPlusPlus", # 3-hop dependency cycle
-    "//${llvm_root}lldb/source/Plugins/LanguageRuntime/CPlusPlus",
-    "//${llvm_root}lldb/source/Plugins/LanguageRuntime/ObjC",
-    "//${llvm_root}lldb/source/Symbol",
-    "//${llvm_root}lldb/source/Target",
-    "//${llvm_root}lldb/source/Utility",
-    "//${llvm_root}llvm/lib/ExecutionEngine",
-    "//${llvm_root}llvm/lib/ExecutionEngine/MCJIT",
+    #"//${llvm_build_root}/secondary/lldb/source/Plugins/Language/CPlusPlus", # 3-hop dependency cycle
+    "//${llvm_build_root}/secondary/lldb/source/Plugins/LanguageRuntime/CPlusPlus",
+    "//${llvm_build_root}/secondary/lldb/source/Plugins/LanguageRuntime/ObjC",
+    "//${llvm_build_root}/secondary/lldb/source/Symbol",
+    "//${llvm_build_root}/secondary/lldb/source/Target",
+    "//${llvm_build_root}/secondary/lldb/source/Utility",
+    "//${llvm_build_root}/secondary/llvm/lib/ExecutionEngine",
+    "//${llvm_build_root}/secondary/llvm/lib/ExecutionEngine/MCJIT",
 
-    #"//${llvm_root}lldb/source/Plugins/TypeSystem/Clang", # Dependency cycle
-    "//${llvm_root}llvm/lib/IR",
-    "//${llvm_root}llvm/lib/Support",
-    "//${llvm_root}llvm/lib/TargetParser",
-    "//${llvm_root}llvm/lib/Transforms/IPO",
+    #"//${llvm_build_root}/secondary/lldb/source/Plugins/TypeSystem/Clang", # Dependency cycle
+    "//${llvm_build_root}/secondary/llvm/lib/IR",
+    "//${llvm_build_root}/secondary/llvm/lib/Support",
+    "//${llvm_build_root}/secondary/llvm/lib/TargetParser",
+    "//${llvm_build_root}/secondary/llvm/lib/Transforms/IPO",
   ]
 
   # Uses source-relative paths for own includes (!)
-  include_dirs = [ "//${llvm_root}lldb/source" ]
+  include_dirs = [ "//${llvm_build_root}/secondary/lldb/source" ]
   sources = [
     "ASTResultSynthesizer.cpp",
     "ASTStructExtractor.cpp",

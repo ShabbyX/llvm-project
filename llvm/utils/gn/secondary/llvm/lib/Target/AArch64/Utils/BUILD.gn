@@ -1,6 +1,6 @@
 import("//build_overrides/llvm.gni")
 
-import("//${llvm_root}llvm/utils/TableGen/tablegen.gni")
+import("//${llvm_build_root}/secondary/llvm/utils/TableGen/tablegen.gni")
 
 # Generates AArch64GenSystemOperands.inc
 tablegen("AArch64GenSystemOperands") {
@@ -13,11 +13,11 @@ static_library("Utils") {
   output_name = "LLVMAArch64Utils"
   public_deps = [ ":AArch64GenSystemOperands" ]
   deps = [
-    "//${llvm_root}llvm/lib/Support",
+    "//${llvm_build_root}/secondary/llvm/lib/Support",
 
     # MCTargetDesc depends on Utils, so we can't depend on the full
     # MCTargetDesc target here: it would form a cycle.
-    "//${llvm_root}llvm/lib/Target/AArch64/MCTargetDesc:tablegen",
+    "//${llvm_build_root}/secondary/llvm/lib/Target/AArch64/MCTargetDesc:tablegen",
   ]
 
   # AArch64BaseInfo.h includes a header from MCTargetDesc :-/

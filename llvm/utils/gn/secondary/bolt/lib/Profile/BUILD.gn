@@ -2,12 +2,12 @@ import("//build_overrides/llvm.gni")
 
 static_library("Profile") {
   output_name = "LLVMBOLTProfile"
-  configs += [ "//${llvm_build_root}build:bolt_code" ]
+  configs += [ "//${llvm_build_root}/build:bolt_code" ]
   deps = [
-    "//${llvm_root}bolt/lib/Core",
-    "//${llvm_root}bolt/lib/Passes",
-    "//${llvm_root}bolt/lib/Utils",
-    "//${llvm_root}llvm/lib/Support",
+    "//${llvm_build_root}/secondary/bolt/lib/Core",
+    "//${llvm_build_root}/secondary/bolt/lib/Passes",
+    "//${llvm_build_root}/secondary/bolt/lib/Utils",
+    "//${llvm_build_root}/secondary/llvm/lib/Support",
   ]
   sources = [
     "BoltAddressTranslation.cpp",

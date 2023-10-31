@@ -2,15 +2,15 @@ import("//build_overrides/llvm.gni")
 
 static_library("PECOFF") {
   output_name = "lldbPluginSymbolVendorPECOFF"
-  configs += [ "//${llvm_build_root}build:lldb_code" ]
+  configs += [ "//${llvm_build_root}/build:lldb_code" ]
   deps = [
-    "//${llvm_root}lldb/source/Core",
-    "//${llvm_root}lldb/source/Host",
-    "//${llvm_root}lldb/source/Plugins/ObjectFile/PECOFF",
-    "//${llvm_root}lldb/source/Symbol",
+    "//${llvm_build_root}/secondary/lldb/source/Core",
+    "//${llvm_build_root}/secondary/lldb/source/Host",
+    "//${llvm_build_root}/secondary/lldb/source/Plugins/ObjectFile/PECOFF",
+    "//${llvm_build_root}/secondary/lldb/source/Symbol",
   ]
 
   # Reaches into Plugins/ObjectFile/PECOFF.
-  include_dirs = [ "//${llvm_root}lldb/source" ]
+  include_dirs = [ "//${llvm_build_root}/secondary/lldb/source" ]
   sources = [ "SymbolVendorPECOFF.cpp" ]
 }

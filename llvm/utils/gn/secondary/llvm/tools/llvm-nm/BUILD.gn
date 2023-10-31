@@ -1,9 +1,9 @@
 import("//build_overrides/llvm.gni")
 
-import("//${llvm_root}llvm/tools/binutils_symlinks.gni")
-import("//${llvm_root}llvm/utils/TableGen/tablegen.gni")
-import("//${llvm_build_root}build/driver_executable.gni")
-import("//${llvm_build_root}build/symlink_or_copy.gni")
+import("//${llvm_build_root}/secondary/llvm/tools/binutils_symlinks.gni")
+import("//${llvm_build_root}/secondary/llvm/utils/TableGen/tablegen.gni")
+import("//${llvm_build_root}/build/driver_executable.gni")
+import("//${llvm_build_root}/build/symlink_or_copy.gni")
 
 tablegen("Opts") {
   visibility = [ ":llvm-nm" ]
@@ -29,16 +29,16 @@ group("symlinks") {
 driver_executable("llvm-nm") {
   deps = [
     ":Opts",
-    "//${llvm_root}llvm/lib/Bitcode/Reader",
-    "//${llvm_root}llvm/lib/Demangle",
-    "//${llvm_root}llvm/lib/IR",
-    "//${llvm_root}llvm/lib/Object",
-    "//${llvm_root}llvm/lib/Option",
-    "//${llvm_root}llvm/lib/Support",
-    "//${llvm_root}llvm/lib/Target:AllTargetsAsmParsers",
-    "//${llvm_root}llvm/lib/Target:AllTargetsDescs",
-    "//${llvm_root}llvm/lib/Target:AllTargetsInfos",
-    "//${llvm_root}llvm/lib/TargetParser",
+    "//${llvm_build_root}/secondary/llvm/lib/Bitcode/Reader",
+    "//${llvm_build_root}/secondary/llvm/lib/Demangle",
+    "//${llvm_build_root}/secondary/llvm/lib/IR",
+    "//${llvm_build_root}/secondary/llvm/lib/Object",
+    "//${llvm_build_root}/secondary/llvm/lib/Option",
+    "//${llvm_build_root}/secondary/llvm/lib/Support",
+    "//${llvm_build_root}/secondary/llvm/lib/Target:AllTargetsAsmParsers",
+    "//${llvm_build_root}/secondary/llvm/lib/Target:AllTargetsDescs",
+    "//${llvm_build_root}/secondary/llvm/lib/Target:AllTargetsInfos",
+    "//${llvm_build_root}/secondary/llvm/lib/TargetParser",
   ]
   sources = [ "llvm-nm.cpp" ]
 }

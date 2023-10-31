@@ -1,7 +1,7 @@
 import("//build_overrides/llvm.gni")
 
-import("//${llvm_root}llvm/lib/Target/targets.gni")
-import("//${llvm_build_root}build/write_cmake_config.gni")
+import("//${llvm_build_root}/secondary/llvm/lib/Target/targets.gni")
+import("//${llvm_build_root}/build/write_cmake_config.gni")
 
 # In the CMake build, each plugin calls `add_lldb_library(name PLUGIN ...)`,
 # which implicitly adds the plugin name to the LLDB_PLUGINS list.
@@ -13,189 +13,189 @@ import("//${llvm_build_root}build/write_cmake_config.gni")
 lldb_plugins = []
 if (llvm_build_X86) {
   lldb_plugins += [ [
-        "//${llvm_root}lldb/source/Plugins/ABI/X86",
+        "//${llvm_build_root}/secondary/lldb/source/Plugins/ABI/X86",
         "ABIX86",
       ] ]
 }
 lldb_plugins += [
   [
-    "//${llvm_root}lldb/source/Plugins/Architecture/PPC64",
+    "//${llvm_build_root}/secondary/lldb/source/Plugins/Architecture/PPC64",
     "ArchitecturePPC64",
   ],
   [
-    "//${llvm_root}lldb/source/Plugins/Disassembler/LLVMC",
+    "//${llvm_build_root}/secondary/lldb/source/Plugins/Disassembler/LLVMC",
     "DisassemblerLLVMC",
   ],
   [
-    "//${llvm_root}lldb/source/Plugins/DynamicLoader/Darwin-Kernel",
+    "//${llvm_build_root}/secondary/lldb/source/Plugins/DynamicLoader/Darwin-Kernel",
     "DynamicLoaderDarwinKernel",
   ],
   [
-    "//${llvm_root}lldb/source/Plugins/DynamicLoader/MacOSX-DYLD",
+    "//${llvm_build_root}/secondary/lldb/source/Plugins/DynamicLoader/MacOSX-DYLD",
     "DynamicLoaderMacOSXDYLD",
   ],
   [
-    "//${llvm_root}lldb/source/Plugins/DynamicLoader/POSIX-DYLD",
+    "//${llvm_build_root}/secondary/lldb/source/Plugins/DynamicLoader/POSIX-DYLD",
     "DynamicLoaderPosixDYLD",
   ],
   [
-    "//${llvm_root}lldb/source/Plugins/DynamicLoader/Static",
+    "//${llvm_build_root}/secondary/lldb/source/Plugins/DynamicLoader/Static",
     "DynamicLoaderStatic",
   ],
   [
-    "//${llvm_root}lldb/source/Plugins/DynamicLoader/Windows-DYLD",
+    "//${llvm_build_root}/secondary/lldb/source/Plugins/DynamicLoader/Windows-DYLD",
     "DynamicLoaderWindowsDYLD",
   ],
   [
-    "//${llvm_root}lldb/source/Plugins/Instruction/ARM",
+    "//${llvm_build_root}/secondary/lldb/source/Plugins/Instruction/ARM",
     "InstructionARM",
   ],
   [
-    "//${llvm_root}lldb/source/Plugins/JITLoader/GDB",
+    "//${llvm_build_root}/secondary/lldb/source/Plugins/JITLoader/GDB",
     "JITLoaderGDB",
   ],
   [
-    "//${llvm_root}lldb/source/Plugins/Language/CPlusPlus",
+    "//${llvm_build_root}/secondary/lldb/source/Plugins/Language/CPlusPlus",
     "CPlusPlusLanguage",
   ],
   [
-    "//${llvm_root}lldb/source/Plugins/Language/ObjC",
+    "//${llvm_build_root}/secondary/lldb/source/Plugins/Language/ObjC",
     "ObjCLanguage",
   ],
   [
-    "//${llvm_root}lldb/source/Plugins/Language/ObjCPlusPlus",
+    "//${llvm_build_root}/secondary/lldb/source/Plugins/Language/ObjCPlusPlus",
     "ObjCPlusPlusLanguage",
   ],
   [
-    "//${llvm_root}lldb/source/Plugins/LanguageRuntime/CPlusPlus/ItaniumABI",
+    "//${llvm_build_root}/secondary/lldb/source/Plugins/LanguageRuntime/CPlusPlus/ItaniumABI",
     "CXXItaniumABI",
   ],
   [
-    "//${llvm_root}lldb/source/Plugins/LanguageRuntime/ObjC/AppleObjCRuntime",
+    "//${llvm_build_root}/secondary/lldb/source/Plugins/LanguageRuntime/ObjC/AppleObjCRuntime",
     "AppleObjCRuntime",
   ],
   [
-    "//${llvm_root}lldb/source/Plugins/ObjectContainer/BSD-Archive",
+    "//${llvm_build_root}/secondary/lldb/source/Plugins/ObjectContainer/BSD-Archive",
     "ObjectContainerBSDArchive",
   ],
   [
-    "//${llvm_root}lldb/source/Plugins/ObjectContainer/Universal-Mach-O",
+    "//${llvm_build_root}/secondary/lldb/source/Plugins/ObjectContainer/Universal-Mach-O",
     "ObjectContainerMachOArchive",
   ],
   [
-    "//${llvm_root}lldb/source/Plugins/ObjectFile/Breakpad",
+    "//${llvm_build_root}/secondary/lldb/source/Plugins/ObjectFile/Breakpad",
     "ObjectFileBreakpad",
   ],
   [
-    "//${llvm_root}lldb/source/Plugins/ObjectFile/ELF",
+    "//${llvm_build_root}/secondary/lldb/source/Plugins/ObjectFile/ELF",
     "ObjectFileELF",
   ],
   [
-    "//${llvm_root}lldb/source/Plugins/ObjectFile/Mach-O",
+    "//${llvm_build_root}/secondary/lldb/source/Plugins/ObjectFile/Mach-O",
     "ObjectFileMachO",
   ],
   [
-    "//${llvm_root}lldb/source/Plugins/ObjectFile/PDB",
+    "//${llvm_build_root}/secondary/lldb/source/Plugins/ObjectFile/PDB",
     "ObjectFilePDB",
   ],
   [
-    "//${llvm_root}lldb/source/Plugins/ObjectFile/PECOFF",
+    "//${llvm_build_root}/secondary/lldb/source/Plugins/ObjectFile/PECOFF",
     "ObjectFilePECOFF",
   ],
   [
-    "//${llvm_root}lldb/source/Plugins/ObjectFile/Placeholder",
+    "//${llvm_build_root}/secondary/lldb/source/Plugins/ObjectFile/Placeholder",
     "ObjectFilePlaceholder",
   ],
   [
-    "//${llvm_root}lldb/source/Plugins/ObjectFile/wasm",
+    "//${llvm_build_root}/secondary/lldb/source/Plugins/ObjectFile/wasm",
     "ObjectFileWasm",
   ],
   [
-    "//${llvm_root}lldb/source/Plugins/Platform/Linux",
+    "//${llvm_build_root}/secondary/lldb/source/Plugins/Platform/Linux",
     "PlatformLinux",
   ],
   [
-    "//${llvm_root}lldb/source/Plugins/Platform/MacOSX",
+    "//${llvm_build_root}/secondary/lldb/source/Plugins/Platform/MacOSX",
     "PlatformMacOSX",
   ],
   [
-    "//${llvm_root}lldb/source/Plugins/Platform/Windows",
+    "//${llvm_build_root}/secondary/lldb/source/Plugins/Platform/Windows",
     "PlatformWindows",
   ],
   [
-    "//${llvm_root}lldb/source/Plugins/Process/elf-core",
+    "//${llvm_build_root}/secondary/lldb/source/Plugins/Process/elf-core",
     "ProcessElfCore",
   ],
   [
-    "//${llvm_root}lldb/source/Plugins/Process/gdb-remote",
+    "//${llvm_build_root}/secondary/lldb/source/Plugins/Process/gdb-remote",
     "",  # Uses LLDB_PROCESS_GDB_PLUGIN instead.
   ],
   [
-    "//${llvm_root}lldb/source/Plugins/Process/mach-core",
+    "//${llvm_build_root}/secondary/lldb/source/Plugins/Process/mach-core",
     "ProcessMachCore",
   ],
   [
-    "//${llvm_root}lldb/source/Plugins/Process/minidump",
+    "//${llvm_build_root}/secondary/lldb/source/Plugins/Process/minidump",
     "ProcessMinidump",
   ],
   [
-    "//${llvm_root}lldb/source/Plugins/REPL/Clang",
+    "//${llvm_build_root}/secondary/lldb/source/Plugins/REPL/Clang",
     "ClangREPL",
   ],
   [
-    "//${llvm_root}lldb/source/Plugins/ScriptInterpreter/None",
+    "//${llvm_build_root}/secondary/lldb/source/Plugins/ScriptInterpreter/None",
     "",  # Uses LLDB_SCRIPT_PLUGIN instead.
   ],
   [
-    "//${llvm_root}lldb/source/Plugins/SymbolFile/Breakpad",
+    "//${llvm_build_root}/secondary/lldb/source/Plugins/SymbolFile/Breakpad",
     "SymbolFileBreakpad",
   ],
   [
-    "//${llvm_root}lldb/source/Plugins/SymbolFile/DWARF",
+    "//${llvm_build_root}/secondary/lldb/source/Plugins/SymbolFile/DWARF",
     "SymbolFileDWARF",
   ],
   [
-    "//${llvm_root}lldb/source/Plugins/SymbolFile/PDB",
+    "//${llvm_build_root}/secondary/lldb/source/Plugins/SymbolFile/PDB",
     "SymbolFilePDB",
   ],
   [
-    "//${llvm_root}lldb/source/Plugins/SymbolFile/Symtab",
+    "//${llvm_build_root}/secondary/lldb/source/Plugins/SymbolFile/Symtab",
     "SymbolFileSymtab",
   ],
 ]
 if (current_os == "mac") {
   lldb_plugins += [ [
-        "//${llvm_root}lldb/source/Plugins/SymbolVendor/MacOSX",
+        "//${llvm_build_root}/secondary/lldb/source/Plugins/SymbolVendor/MacOSX",
         "SymbolVendorMacOSX",
       ] ]
 }
 lldb_plugins += [
   [
-    "//${llvm_root}lldb/source/Plugins/SymbolVendor/ELF",
+    "//${llvm_build_root}/secondary/lldb/source/Plugins/SymbolVendor/ELF",
     "SymbolVendorELF",
   ],
 
   [
-    "//${llvm_root}lldb/source/Plugins/SymbolVendor/wasm",
+    "//${llvm_build_root}/secondary/lldb/source/Plugins/SymbolVendor/wasm",
     "SymbolVendorWasm",
   ],
 
   [
-    "//${llvm_root}lldb/source/Plugins/SymbolVendor/PECOFF",
+    "//${llvm_build_root}/secondary/lldb/source/Plugins/SymbolVendor/PECOFF",
     "SymbolVendorPECOFF",
   ],
 
   [
-    "//${llvm_root}lldb/source/Plugins/TypeSystem/Clang",
+    "//${llvm_build_root}/secondary/lldb/source/Plugins/TypeSystem/Clang",
     "TypeSystemClang",
   ],
 
   [
-    "//${llvm_root}lldb/source/Plugins/UnwindAssembly/InstEmulation",
+    "//${llvm_build_root}/secondary/lldb/source/Plugins/UnwindAssembly/InstEmulation",
     "UnwindAssemblyInstEmulation",
   ],
   [
-    "//${llvm_root}lldb/source/Plugins/UnwindAssembly/x86",
+    "//${llvm_build_root}/secondary/lldb/source/Plugins/UnwindAssembly/x86",
     "UnwindAssemblyX86",
   ],
 ]
@@ -214,7 +214,7 @@ write_cmake_config("Plugins.def") {
     }
   }
 
-  deps = [ "//${llvm_root}lldb/source/Plugins/ScriptInterpreter/None" ]
+  deps = [ "//${llvm_build_root}/secondary/lldb/source/Plugins/ScriptInterpreter/None" ]
   enum_plugins += "LLDB_SCRIPT_PLUGIN(ScriptInterpreterNone)"
 
   values = [ "LLDB_ENUM_PLUGINS=" + enum_plugins ]
@@ -234,7 +234,7 @@ config("AllLldbPlugins_config") {
   visibility = [ ":LldbAllPlugins" ]
 
   # To pick up Plugins.def.
-  include_dirs = [ "$root_gen_dir/${llvm_root}/lldb/source" ]
+  include_dirs = [ "$root_gen_dir/${llvm_build_root}/secondary/lldb/source" ]
 }
 
 group("LldbAllPlugins") {

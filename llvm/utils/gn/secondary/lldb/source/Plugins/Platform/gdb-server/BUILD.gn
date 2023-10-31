@@ -3,20 +3,20 @@ import("//build_overrides/llvm.gni")
 static_library("gdb-server") {
   output_name = "lldbPluginPlatformGDB"
   configs += [
-    "//${llvm_build_root}build:clang_code",
-    "//${llvm_build_root}build:lldb_code",
+    "//${llvm_build_root}/build:clang_code",
+    "//${llvm_build_root}/build:lldb_code",
   ]
   deps = [
-    "//${llvm_root}lldb/source/Breakpoint",
-    "//${llvm_root}lldb/source/Core",
-    "//${llvm_root}lldb/source/Host",
-    "//${llvm_root}lldb/source/Plugins/Process/Utility",
+    "//${llvm_build_root}/secondary/lldb/source/Breakpoint",
+    "//${llvm_build_root}/secondary/lldb/source/Core",
+    "//${llvm_build_root}/secondary/lldb/source/Host",
+    "//${llvm_build_root}/secondary/lldb/source/Plugins/Process/Utility",
 
-    #"//${llvm_root}lldb/source/Plugins/Process/gdb-remote",  # 4-deep dependency cycle
-    "//${llvm_root}lldb/source/Target",
+    #"//${llvm_build_root}/secondary/lldb/source/Plugins/Process/gdb-remote",  # 4-deep dependency cycle
+    "//${llvm_build_root}/secondary/lldb/source/Target",
   ]
 
   # Reaches into Plugins/Process/Utility.
-  include_dirs = [ "//${llvm_root}lldb/source" ]
+  include_dirs = [ "//${llvm_build_root}/secondary/lldb/source" ]
   sources = [ "PlatformRemoteGDBServer.cpp" ]
 }

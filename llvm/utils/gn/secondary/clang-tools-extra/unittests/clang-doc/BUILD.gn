@@ -1,25 +1,25 @@
 import("//build_overrides/llvm.gni")
 
-import("//${llvm_root}third-party/unittest/unittest.gni")
+import("//${llvm_build_root}/secondary/third-party/unittest/unittest.gni")
 
 unittest("ClangDocTests") {
-  configs += [ "//${llvm_build_root}build:clang_code" ]
+  configs += [ "//${llvm_build_root}/build:clang_code" ]
   deps = [
-    "//${llvm_root}clang-tools-extra/clang-doc",
-    "//${llvm_root}clang/lib/AST",
-    "//${llvm_root}clang/lib/ASTMatchers",
-    "//${llvm_root}clang/lib/Basic",
-    "//${llvm_root}clang/lib/Format",
-    "//${llvm_root}clang/lib/Frontend",
-    "//${llvm_root}clang/lib/Rewrite",
-    "//${llvm_root}clang/lib/Serialization",
-    "//${llvm_root}clang/lib/Tooling",
-    "//${llvm_root}clang/lib/Tooling/Core",
-    "//${llvm_root}llvm/lib/Bitcode/Reader",
-    "//${llvm_root}llvm/lib/Bitcode/Writer",
-    "//${llvm_root}llvm/lib/Support",
+    "//${llvm_build_root}/secondary/clang-tools-extra/clang-doc",
+    "//${llvm_build_root}/secondary/clang/lib/AST",
+    "//${llvm_build_root}/secondary/clang/lib/ASTMatchers",
+    "//${llvm_build_root}/secondary/clang/lib/Basic",
+    "//${llvm_build_root}/secondary/clang/lib/Format",
+    "//${llvm_build_root}/secondary/clang/lib/Frontend",
+    "//${llvm_build_root}/secondary/clang/lib/Rewrite",
+    "//${llvm_build_root}/secondary/clang/lib/Serialization",
+    "//${llvm_build_root}/secondary/clang/lib/Tooling",
+    "//${llvm_build_root}/secondary/clang/lib/Tooling/Core",
+    "//${llvm_build_root}/secondary/llvm/lib/Bitcode/Reader",
+    "//${llvm_build_root}/secondary/llvm/lib/Bitcode/Writer",
+    "//${llvm_build_root}/secondary/llvm/lib/Support",
   ]
-  include_dirs = [ "//${llvm_root}clang-tools-extra/clang-doc" ]
+  include_dirs = [ "//${llvm_build_root}/secondary/clang-tools-extra/clang-doc" ]
   sources = [
     "BitcodeTest.cpp",
     "ClangDocTest.cpp",

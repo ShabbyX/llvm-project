@@ -1,16 +1,16 @@
 import("//build_overrides/llvm.gni")
 
-import("//${llvm_root}third-party/unittest/unittest.gni")
+import("//${llvm_build_root}/secondary/third-party/unittest/unittest.gni")
 
 unittest("DebugInfoLogicalViewTests") {
   deps = [
-    "//${llvm_root}llvm/lib/DebugInfo/LogicalView",
-    "//${llvm_root}llvm/lib/MC/MCDisassembler",
-    "//${llvm_root}llvm/lib/Target:AllTargetsDescs",
-    "//${llvm_root}llvm/lib/Target:AllTargetsDisassemblers",
-    "//${llvm_root}llvm/lib/Target:AllTargetsInfos",
-    "//${llvm_root}llvm/lib/TargetParser",
-    "//${llvm_root}llvm/lib/Testing/Support",
+    "//${llvm_build_root}/secondary/llvm/lib/DebugInfo/LogicalView",
+    "//${llvm_build_root}/secondary/llvm/lib/MC/MCDisassembler",
+    "//${llvm_build_root}/secondary/llvm/lib/Target:AllTargetsDescs",
+    "//${llvm_build_root}/secondary/llvm/lib/Target:AllTargetsDisassemblers",
+    "//${llvm_build_root}/secondary/llvm/lib/Target:AllTargetsInfos",
+    "//${llvm_build_root}/secondary/llvm/lib/TargetParser",
+    "//${llvm_build_root}/secondary/llvm/lib/Testing/Support",
   ]
   sources = [
     "CodeViewReaderTest.cpp",

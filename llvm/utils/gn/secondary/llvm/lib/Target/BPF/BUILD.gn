@@ -1,6 +1,6 @@
 import("//build_overrides/llvm.gni")
 
-import("//${llvm_root}llvm/utils/TableGen/tablegen.gni")
+import("//${llvm_build_root}/secondary/llvm/utils/TableGen/tablegen.gni")
 
 tablegen("BPFGenCallingConv") {
   visibility = [ ":LLVMBPFCodeGen" ]
@@ -48,17 +48,17 @@ static_library("LLVMBPFCodeGen") {
     ":BPFGenRegisterBank",
     "MCTargetDesc",
     "TargetInfo",
-    "//${llvm_root}llvm/include/llvm/Config:llvm-config",
-    "//${llvm_root}llvm/lib/Analysis",
-    "//${llvm_root}llvm/lib/CodeGen",
-    "//${llvm_root}llvm/lib/CodeGen/AsmPrinter",
-    "//${llvm_root}llvm/lib/CodeGen/GlobalISel",
-    "//${llvm_root}llvm/lib/CodeGen/SelectionDAG",
-    "//${llvm_root}llvm/lib/IR",
-    "//${llvm_root}llvm/lib/MC",
-    "//${llvm_root}llvm/lib/Support",
-    "//${llvm_root}llvm/lib/Target",
-    "//${llvm_root}llvm/lib/TargetParser",
+    "//${llvm_build_root}/secondary/llvm/include/llvm/Config:llvm-config",
+    "//${llvm_build_root}/secondary/llvm/lib/Analysis",
+    "//${llvm_build_root}/secondary/llvm/lib/CodeGen",
+    "//${llvm_build_root}/secondary/llvm/lib/CodeGen/AsmPrinter",
+    "//${llvm_build_root}/secondary/llvm/lib/CodeGen/GlobalISel",
+    "//${llvm_build_root}/secondary/llvm/lib/CodeGen/SelectionDAG",
+    "//${llvm_build_root}/secondary/llvm/lib/IR",
+    "//${llvm_build_root}/secondary/llvm/lib/MC",
+    "//${llvm_build_root}/secondary/llvm/lib/Support",
+    "//${llvm_build_root}/secondary/llvm/lib/Target",
+    "//${llvm_build_root}/secondary/llvm/lib/TargetParser",
   ]
   include_dirs = [ "." ]
   sources = [
@@ -85,10 +85,10 @@ static_library("LLVMBPFCodeGen") {
 }
 
 # This is a bit different from most build files: Due to this group
-# having the directory's name, "//${llvm_root}llvm/lib/Target/BPF" will refer to this
+# having the directory's name, "//${llvm_build_root}/secondary/llvm/lib/Target/BPF" will refer to this
 # target, which pulls in the code in this directory *and all subdirectories*.
-# For most other directories, "//${llvm_root}llvm/lib/Foo" only pulls in the code directly
-# in "llvm/lib/Foo". The forwarding targets in //${llvm_root}llvm/lib/Target expect this
+# For most other directories, "//${llvm_build_root}/secondary/llvm/lib/Foo" only pulls in the code directly
+# in "llvm/lib/Foo". The forwarding targets in //${llvm_build_root}/secondary/llvm/lib/Target expect this
 # different behavior.
 group("BPF") {
   deps = [

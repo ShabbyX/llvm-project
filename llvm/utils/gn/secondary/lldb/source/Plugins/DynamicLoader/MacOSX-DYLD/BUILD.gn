@@ -3,24 +3,24 @@ import("//build_overrides/llvm.gni")
 static_library("MacOSX-DYLD") {
   output_name = "lldbPluginDynamicLoaderMacOSXDYLD"
   configs += [
-    "//${llvm_build_root}build:clang_code",
-    "//${llvm_build_root}build:lldb_code",
+    "//${llvm_build_root}/build:clang_code",
+    "//${llvm_build_root}/build:lldb_code",
   ]
   deps = [
-    "//${llvm_root}lldb/source/Breakpoint",
-    "//${llvm_root}lldb/source/Core",
-    "//${llvm_root}lldb/source/Expression",
-    "//${llvm_root}lldb/source/Host",
-    "//${llvm_root}lldb/source/Plugins/TypeSystem/Clang",
-    "//${llvm_root}lldb/source/Symbol",
-    "//${llvm_root}lldb/source/Target",
-    "//${llvm_root}lldb/source/Utility",
-    "//${llvm_root}llvm/lib/Support",
-    "//${llvm_root}llvm/lib/TargetParser",
+    "//${llvm_build_root}/secondary/lldb/source/Breakpoint",
+    "//${llvm_build_root}/secondary/lldb/source/Core",
+    "//${llvm_build_root}/secondary/lldb/source/Expression",
+    "//${llvm_build_root}/secondary/lldb/source/Host",
+    "//${llvm_build_root}/secondary/lldb/source/Plugins/TypeSystem/Clang",
+    "//${llvm_build_root}/secondary/lldb/source/Symbol",
+    "//${llvm_build_root}/secondary/lldb/source/Target",
+    "//${llvm_build_root}/secondary/lldb/source/Utility",
+    "//${llvm_build_root}/secondary/llvm/lib/Support",
+    "//${llvm_build_root}/secondary/llvm/lib/TargetParser",
   ]
 
   # Reaches into Plugins/LanguageRuntime/ObjC.
-  include_dirs = [ "//${llvm_root}lldb/source" ]
+  include_dirs = [ "//${llvm_build_root}/secondary/lldb/source" ]
   sources = [
     "DynamicLoaderDarwin.cpp",
     "DynamicLoaderMacOS.cpp",

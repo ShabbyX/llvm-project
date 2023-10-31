@@ -3,10 +3,10 @@ import("//build_overrides/llvm.gni")
 static_library("IRReader") {
   output_name = "LLVMIRReader"
   deps = [
-    "//${llvm_root}llvm/lib/AsmParser",
-    "//${llvm_root}llvm/lib/Bitcode/Reader",
-    "//${llvm_root}llvm/lib/IR",
-    "//${llvm_root}llvm/lib/Support",
+    "//${llvm_build_root}/secondary/llvm/lib/AsmParser",
+    "//${llvm_build_root}/secondary/llvm/lib/Bitcode/Reader",
+    "//${llvm_build_root}/secondary/llvm/lib/IR",
+    "//${llvm_build_root}/secondary/llvm/lib/Support",
   ]
   sources = [ "IRReader.cpp" ]
   configs += llvm_code_override_configs_append

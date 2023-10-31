@@ -2,10 +2,10 @@ import("//build_overrides/llvm.gni")
 
 static_library("Symtab") {
   output_name = "lldbPluginSymbolFileSymtab"
-  configs += [ "//${llvm_build_root}build:lldb_code" ]
+  configs += [ "//${llvm_build_root}/build:lldb_code" ]
   deps = [
-    "//${llvm_root}lldb/source/Core",
-    "//${llvm_root}lldb/source/Symbol",
+    "//${llvm_build_root}/secondary/lldb/source/Core",
+    "//${llvm_build_root}/secondary/lldb/source/Symbol",
   ]
   sources = [ "SymbolFileSymtab.cpp" ]
 }

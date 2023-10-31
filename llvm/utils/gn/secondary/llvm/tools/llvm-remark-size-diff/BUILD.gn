@@ -2,11 +2,11 @@ import("//build_overrides/llvm.gni")
 
 executable("llvm-remark-size-diff") {
   deps = [
-    "//${llvm_root}llvm/lib/Demangle",
-    "//${llvm_root}llvm/lib/IR",
-    "//${llvm_root}llvm/lib/Object",
-    "//${llvm_root}llvm/lib/Remarks",
-    "//${llvm_root}llvm/lib/Support",
+    "//${llvm_build_root}/secondary/llvm/lib/Demangle",
+    "//${llvm_build_root}/secondary/llvm/lib/IR",
+    "//${llvm_build_root}/secondary/llvm/lib/Object",
+    "//${llvm_build_root}/secondary/llvm/lib/Remarks",
+    "//${llvm_build_root}/secondary/llvm/lib/Support",
   ]
   sources = [ "RemarkSizeDiff.cpp" ]
 }

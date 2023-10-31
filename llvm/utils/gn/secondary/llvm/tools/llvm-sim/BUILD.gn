@@ -2,9 +2,9 @@ import("//build_overrides/llvm.gni")
 
 executable("llvm-sim") {
   deps = [
-    "//${llvm_root}llvm/lib/Analysis",
-    "//${llvm_root}llvm/lib/IRReader",
-    "//${llvm_root}llvm/lib/Support",
+    "//${llvm_build_root}/secondary/llvm/lib/Analysis",
+    "//${llvm_build_root}/secondary/llvm/lib/IRReader",
+    "//${llvm_build_root}/secondary/llvm/lib/Support",
   ]
   sources = [ "llvm-sim.cpp" ]
 }

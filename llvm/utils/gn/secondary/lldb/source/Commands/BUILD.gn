@@ -1,6 +1,6 @@
 import("//build_overrides/llvm.gni")
 
-import("//${llvm_root}lldb/utils/TableGen/lldb_tablegen.gni")
+import("//${llvm_build_root}/secondary/lldb/utils/TableGen/lldb_tablegen.gni")
 
 lldb_tablegen("CommandOptions") {
   args = [ "-gen-lldb-option-defs" ]
@@ -10,25 +10,25 @@ lldb_tablegen("CommandOptions") {
 static_library("Commands") {
   output_name = "lldbCommands"
   configs += [
-    "//${llvm_build_root}build:clang_code",
-    "//${llvm_build_root}build:lldb_code",
+    "//${llvm_build_root}/build:clang_code",
+    "//${llvm_build_root}/build:lldb_code",
   ]
   deps = [
     ":CommandOptions",
-    "//${llvm_root}llvm/lib/Support",
+    "//${llvm_build_root}/secondary/llvm/lib/Support",
 
-    #"//${llvm_root}lldb/source/Breakpoint", # FIXME: many-hop dependency cycle.
-    "//${llvm_root}lldb/source/Core",
-    "//${llvm_root}lldb/source/DataFormatters",
+    #"//${llvm_build_root}/secondary/lldb/source/Breakpoint", # FIXME: many-hop dependency cycle.
+    "//${llvm_build_root}/secondary/lldb/source/Core",
+    "//${llvm_build_root}/secondary/lldb/source/DataFormatters",
 
-    #"//${llvm_root}lldb/source/Expression", # FIXME: 2-hop dependency cycle.
-    "//${llvm_root}lldb/source/Host",
+    #"//${llvm_build_root}/secondary/lldb/source/Expression", # FIXME: 2-hop dependency cycle.
+    "//${llvm_build_root}/secondary/lldb/source/Host",
 
-    #"//${llvm_root}lldb/source/Interpreter", # FIXME: Dependency cycle.
-    #"//${llvm_root}lldb/source/Symbol", # FIXME: many-hop dependency cycle.
-    #"//${llvm_root}lldb/source/Target", # FIXME: 2-hop dependency cycle.
-    "//${llvm_root}lldb/source/Utility",
-    "//${llvm_root}lldb/source/Version",
+    #"//${llvm_build_root}/secondary/lldb/source/Interpreter", # FIXME: Dependency cycle.
+    #"//${llvm_build_root}/secondary/lldb/source/Symbol", # FIXME: many-hop dependency cycle.
+    #"//${llvm_build_root}/secondary/lldb/source/Target", # FIXME: 2-hop dependency cycle.
+    "//${llvm_build_root}/secondary/lldb/source/Utility",
+    "//${llvm_build_root}/secondary/lldb/source/Version",
   ]
   sources = [
     "CommandCompletions.cpp",

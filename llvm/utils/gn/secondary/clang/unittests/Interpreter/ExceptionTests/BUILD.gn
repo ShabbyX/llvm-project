@@ -1,22 +1,22 @@
 import("//build_overrides/llvm.gni")
 
-import("//${llvm_root}third-party/unittest/unittest.gni")
+import("//${llvm_build_root}/secondary/third-party/unittest/unittest.gni")
 
 unittest("ClangReplInterpreterExceptionTests") {
-  configs += [ "//${llvm_build_root}build:clang_code" ]
+  configs += [ "//${llvm_build_root}/build:clang_code" ]
   configs -= [
-    "//${llvm_build_root}build:no_exceptions",
-    "//${llvm_build_root}build:no_rtti",
+    "//${llvm_build_root}/build:no_exceptions",
+    "//${llvm_build_root}/build:no_rtti",
   ]
   deps = [
-    "//${llvm_root}clang/lib/AST",
-    "//${llvm_root}clang/lib/Basic",
-    "//${llvm_root}clang/lib/Frontend",
-    "//${llvm_root}clang/lib/Interpreter",
-    "//${llvm_root}llvm/lib/ExecutionEngine/Orc",
-    "//${llvm_root}llvm/lib/IR",
-    "//${llvm_root}llvm/lib/Support",
-    "//${llvm_root}llvm/lib/Target:TargetsToBuild",
+    "//${llvm_build_root}/secondary/clang/lib/AST",
+    "//${llvm_build_root}/secondary/clang/lib/Basic",
+    "//${llvm_build_root}/secondary/clang/lib/Frontend",
+    "//${llvm_build_root}/secondary/clang/lib/Interpreter",
+    "//${llvm_build_root}/secondary/llvm/lib/ExecutionEngine/Orc",
+    "//${llvm_build_root}/secondary/llvm/lib/IR",
+    "//${llvm_build_root}/secondary/llvm/lib/Support",
+    "//${llvm_build_root}/secondary/llvm/lib/Target:TargetsToBuild",
   ]
   sources = [ "InterpreterExceptionTest.cpp" ]
 }

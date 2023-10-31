@@ -1,9 +1,9 @@
 import("//build_overrides/llvm.gni")
 
-import("//${llvm_root}third-party/unittest/unittest.gni")
+import("//${llvm_build_root}/secondary/third-party/unittest/unittest.gni")
 
 unittest("BitstreamTests") {
-  deps = [ "//${llvm_root}llvm/lib/Bitstream/Reader" ]
+  deps = [ "//${llvm_build_root}/secondary/llvm/lib/Bitstream/Reader" ]
   sources = [
     "BitstreamReaderTest.cpp",
     "BitstreamWriterTest.cpp",

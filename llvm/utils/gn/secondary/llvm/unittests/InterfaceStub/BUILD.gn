@@ -1,11 +1,11 @@
 import("//build_overrides/llvm.gni")
 
-import("//${llvm_root}third-party/unittest/unittest.gni")
+import("//${llvm_build_root}/secondary/third-party/unittest/unittest.gni")
 
 unittest("InterfaceStubTests") {
   deps = [
-    "//${llvm_root}llvm/lib/InterfaceStub",
-    "//${llvm_root}llvm/lib/Testing/Support",
+    "//${llvm_build_root}/secondary/llvm/lib/InterfaceStub",
+    "//${llvm_build_root}/secondary/llvm/lib/Testing/Support",
   ]
   sources = [ "ELFYAMLTest.cpp" ]
 }

@@ -3,17 +3,17 @@ import("//build_overrides/llvm.gni")
 static_library("Object") {
   output_name = "LLVMObject"
   deps = [
-    "//${llvm_root}llvm/include/llvm/Config:llvm-config",
-    "//${llvm_root}llvm/include/llvm/Support:write_vcsrevision",
-    "//${llvm_root}llvm/lib/BinaryFormat",
-    "//${llvm_root}llvm/lib/Bitcode/Reader",
-    "//${llvm_root}llvm/lib/IR",
-    "//${llvm_root}llvm/lib/IRReader",
-    "//${llvm_root}llvm/lib/MC",
-    "//${llvm_root}llvm/lib/MC/MCParser",
-    "//${llvm_root}llvm/lib/Support",
-    "//${llvm_root}llvm/lib/TargetParser",
-    "//${llvm_root}llvm/lib/TextAPI",
+    "//${llvm_build_root}/secondary/llvm/include/llvm/Config:llvm-config",
+    "//${llvm_build_root}/secondary/llvm/include/llvm/Support:write_vcsrevision",
+    "//${llvm_build_root}/secondary/llvm/lib/BinaryFormat",
+    "//${llvm_build_root}/secondary/llvm/lib/Bitcode/Reader",
+    "//${llvm_build_root}/secondary/llvm/lib/IR",
+    "//${llvm_build_root}/secondary/llvm/lib/IRReader",
+    "//${llvm_build_root}/secondary/llvm/lib/MC",
+    "//${llvm_build_root}/secondary/llvm/lib/MC/MCParser",
+    "//${llvm_build_root}/secondary/llvm/lib/Support",
+    "//${llvm_build_root}/secondary/llvm/lib/TargetParser",
+    "//${llvm_build_root}/secondary/llvm/lib/TextAPI",
   ]
 
   sources = [

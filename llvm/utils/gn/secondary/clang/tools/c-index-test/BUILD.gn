@@ -1,18 +1,18 @@
 import("//build_overrides/llvm.gni")
 
 executable("c-index-test") {
-  configs += [ "//${llvm_build_root}build:clang_code" ]
+  configs += [ "//${llvm_build_root}/build:clang_code" ]
   deps = [
-    "//${llvm_root}clang/include/clang/Config",
-    "//${llvm_root}clang/lib/AST",
-    "//${llvm_root}clang/lib/Basic",
-    "//${llvm_root}clang/lib/CodeGen",
-    "//${llvm_root}clang/lib/Frontend",
-    "//${llvm_root}clang/lib/Index",
-    "//${llvm_root}clang/lib/Serialization",
-    "//${llvm_root}clang/tools/libclang",
-    "//${llvm_root}llvm/lib/Support",
-    "//${llvm_build_root}build/libs/xml",
+    "//${llvm_build_root}/secondary/clang/include/clang/Config",
+    "//${llvm_build_root}/secondary/clang/lib/AST",
+    "//${llvm_build_root}/secondary/clang/lib/Basic",
+    "//${llvm_build_root}/secondary/clang/lib/CodeGen",
+    "//${llvm_build_root}/secondary/clang/lib/Frontend",
+    "//${llvm_build_root}/secondary/clang/lib/Index",
+    "//${llvm_build_root}/secondary/clang/lib/Serialization",
+    "//${llvm_build_root}/secondary/clang/tools/libclang",
+    "//${llvm_build_root}/secondary/llvm/lib/Support",
+    "//${llvm_build_root}/build/libs/xml",
   ]
   if (host_os != "win") {
     cflags_c = [ "-std=gnu89" ]

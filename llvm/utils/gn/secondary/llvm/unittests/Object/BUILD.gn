@@ -1,14 +1,14 @@
 import("//build_overrides/llvm.gni")
 
-import("//${llvm_root}third-party/unittest/unittest.gni")
+import("//${llvm_build_root}/secondary/third-party/unittest/unittest.gni")
 
 unittest("ObjectTests") {
   deps = [
-    "//${llvm_root}llvm/lib/BinaryFormat",
-    "//${llvm_root}llvm/lib/Object",
-    "//${llvm_root}llvm/lib/ObjectYAML",
-    "//${llvm_root}llvm/lib/TargetParser",
-    "//${llvm_root}llvm/lib/Testing/Support",
+    "//${llvm_build_root}/secondary/llvm/lib/BinaryFormat",
+    "//${llvm_build_root}/secondary/llvm/lib/Object",
+    "//${llvm_build_root}/secondary/llvm/lib/ObjectYAML",
+    "//${llvm_build_root}/secondary/llvm/lib/TargetParser",
+    "//${llvm_build_root}/secondary/llvm/lib/Testing/Support",
   ]
   sources = [
     "ArchiveTest.cpp",

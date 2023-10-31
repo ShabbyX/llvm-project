@@ -1,24 +1,24 @@
 import("//build_overrides/llvm.gni")
 
-import("//${llvm_root}third-party/unittest/unittest.gni")
+import("//${llvm_build_root}/secondary/third-party/unittest/unittest.gni")
 
 unittest("CodeGenTests") {
   deps = [
-    "//${llvm_root}llvm/lib/Analysis",
-    "//${llvm_root}llvm/lib/AsmParser",
-    "//${llvm_root}llvm/lib/CodeGen",
-    "//${llvm_root}llvm/lib/CodeGen/AsmPrinter",
-    "//${llvm_root}llvm/lib/CodeGen/MIRParser",
-    "//${llvm_root}llvm/lib/CodeGen/SelectionDAG",
-    "//${llvm_root}llvm/lib/FileCheck",
-    "//${llvm_root}llvm/lib/IR",
-    "//${llvm_root}llvm/lib/MC",
-    "//${llvm_root}llvm/lib/Passes",
-    "//${llvm_root}llvm/lib/Support",
-    "//${llvm_root}llvm/lib/Target",
-    "//${llvm_root}llvm/lib/Target:TargetsToBuild",
-    "//${llvm_root}llvm/lib/TargetParser",
-    "//${llvm_root}llvm/lib/Testing/Support",
+    "//${llvm_build_root}/secondary/llvm/lib/Analysis",
+    "//${llvm_build_root}/secondary/llvm/lib/AsmParser",
+    "//${llvm_build_root}/secondary/llvm/lib/CodeGen",
+    "//${llvm_build_root}/secondary/llvm/lib/CodeGen/AsmPrinter",
+    "//${llvm_build_root}/secondary/llvm/lib/CodeGen/MIRParser",
+    "//${llvm_build_root}/secondary/llvm/lib/CodeGen/SelectionDAG",
+    "//${llvm_build_root}/secondary/llvm/lib/FileCheck",
+    "//${llvm_build_root}/secondary/llvm/lib/IR",
+    "//${llvm_build_root}/secondary/llvm/lib/MC",
+    "//${llvm_build_root}/secondary/llvm/lib/Passes",
+    "//${llvm_build_root}/secondary/llvm/lib/Support",
+    "//${llvm_build_root}/secondary/llvm/lib/Target",
+    "//${llvm_build_root}/secondary/llvm/lib/Target:TargetsToBuild",
+    "//${llvm_build_root}/secondary/llvm/lib/TargetParser",
+    "//${llvm_build_root}/secondary/llvm/lib/Testing/Support",
   ]
   sources = [
     "AArch64SelectionDAGTest.cpp",

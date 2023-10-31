@@ -3,15 +3,15 @@ import("//build_overrides/llvm.gni")
 static_library("MC") {
   output_name = "LLVMMC"
   deps = [
-    "//${llvm_root}llvm/include/llvm/Config:config",
-    "//${llvm_root}llvm/lib/BinaryFormat",
-    "//${llvm_root}llvm/lib/DebugInfo/CodeView",
-    "//${llvm_root}llvm/lib/Support",
-    "//${llvm_root}llvm/lib/TargetParser",
+    "//${llvm_build_root}/secondary/llvm/include/llvm/Config:config",
+    "//${llvm_build_root}/secondary/llvm/lib/BinaryFormat",
+    "//${llvm_build_root}/secondary/llvm/lib/DebugInfo/CodeView",
+    "//${llvm_build_root}/secondary/llvm/lib/Support",
+    "//${llvm_build_root}/secondary/llvm/lib/TargetParser",
   ]
   public_deps = [
     # Must be a public_dep because MC's headers include llvm-config.h.
-    "//${llvm_root}llvm/include/llvm/Config:llvm-config",
+    "//${llvm_build_root}/secondary/llvm/include/llvm/Config:llvm-config",
   ]
   sources = [
     "ConstantPools.cpp",

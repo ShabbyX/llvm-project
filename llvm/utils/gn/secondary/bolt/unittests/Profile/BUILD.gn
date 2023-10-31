@@ -1,9 +1,9 @@
 import("//build_overrides/llvm.gni")
 
-import("//${llvm_root}third-party/unittest/unittest.gni")
+import("//${llvm_build_root}/secondary/third-party/unittest/unittest.gni")
 
 unittest("ProfileTests") {
-  configs += [ "//${llvm_build_root}build:bolt_code" ]
-  deps = [ "//${llvm_root}bolt/lib/Profile" ]
+  configs += [ "//${llvm_build_root}/build:bolt_code" ]
+  deps = [ "//${llvm_build_root}/secondary/bolt/lib/Profile" ]
   sources = [ "DataAggregator.cpp" ]
 }

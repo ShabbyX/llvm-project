@@ -3,17 +3,17 @@ import("//build_overrides/llvm.gni")
 static_library("ObjC") {
   output_name = "lldbPluginObjCRuntime"
   configs += [
-    "//${llvm_build_root}build:clang_code",
-    "//${llvm_build_root}build:lldb_code",
+    "//${llvm_build_root}/build:clang_code",
+    "//${llvm_build_root}/build:lldb_code",
   ]
   deps = [
-    "//${llvm_root}lldb/source/Core",
-    "//${llvm_root}lldb/source/Symbol",
-    "//${llvm_root}lldb/source/Target",
-    "//${llvm_root}lldb/source/Utility",
+    "//${llvm_build_root}/secondary/lldb/source/Core",
+    "//${llvm_build_root}/secondary/lldb/source/Symbol",
+    "//${llvm_build_root}/secondary/lldb/source/Target",
+    "//${llvm_build_root}/secondary/lldb/source/Utility",
   ]
 
   # Reaches into Plugins/TypeSystem/Clang.
-  include_dirs = [ "//${llvm_root}lldb/source" ]
+  include_dirs = [ "//${llvm_build_root}/secondary/lldb/source" ]
   sources = [ "ObjCLanguageRuntime.cpp" ]
 }

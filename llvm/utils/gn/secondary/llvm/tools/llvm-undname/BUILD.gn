@@ -2,8 +2,8 @@ import("//build_overrides/llvm.gni")
 
 executable("llvm-undname") {
   deps = [
-    "//${llvm_root}llvm/lib/Demangle",
-    "//${llvm_root}llvm/lib/Support",
+    "//${llvm_build_root}/secondary/llvm/lib/Demangle",
+    "//${llvm_build_root}/secondary/llvm/lib/Support",
   ]
   sources = [ "llvm-undname.cpp" ]
 }

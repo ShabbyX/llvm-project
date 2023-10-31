@@ -2,7 +2,7 @@ import("//build_overrides/llvm.gni")
 
 static_library("Annotations") {
   output_name = "LLVMTestingAnnotations"
-  deps = [ "//${llvm_root}llvm/lib/Support" ]
+  deps = [ "//${llvm_build_root}/secondary/llvm/lib/Support" ]
   sources = [ "Annotations.cpp" ]
   testonly = true
   configs += llvm_code_override_configs_append

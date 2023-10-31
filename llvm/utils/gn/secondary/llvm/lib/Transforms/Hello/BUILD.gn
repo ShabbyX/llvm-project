@@ -1,6 +1,6 @@
 import("//build_overrides/llvm.gni")
 
-import("//${llvm_build_root}build/symbol_exports.gni")
+import("//${llvm_build_root}/build/symbol_exports.gni")
 
 assert(host_os != "win", "loadable modules not supported on win")
 
@@ -15,7 +15,7 @@ loadable_module("Hello") {
 
     # LLVMHello doesn't want to link in any LLVM code, it just
     # needs its headers.
-    "//${llvm_root}llvm/include/llvm/IR:public_tablegen",
+    "//${llvm_build_root}/secondary/llvm/include/llvm/IR:public_tablegen",
   ]
   sources = [ "Hello.cpp" ]
 

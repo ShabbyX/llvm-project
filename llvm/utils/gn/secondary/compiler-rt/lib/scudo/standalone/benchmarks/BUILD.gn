@@ -1,10 +1,10 @@
 import("//build_overrides/llvm.gni")
 
 executable("ScudoBenchmarks") {
-  configs += [ "//${llvm_build_root}build:crt_code" ]
+  configs += [ "//${llvm_build_root}/build:crt_code" ]
   sources = [ "malloc_benchmark.cpp" ]
   deps = [
-    "//${llvm_root}compiler-rt/lib/scudo/standalone:sources",
-    "//${llvm_root}third-party/benchmark",
+    "//${llvm_build_root}/secondary/compiler-rt/lib/scudo/standalone:sources",
+    "//${llvm_build_root}/secondary/third-party/benchmark",
   ]
 }

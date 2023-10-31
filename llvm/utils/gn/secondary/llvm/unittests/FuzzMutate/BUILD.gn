@@ -1,13 +1,13 @@
 import("//build_overrides/llvm.gni")
 
-import("//${llvm_root}third-party/unittest/unittest.gni")
+import("//${llvm_build_root}/secondary/third-party/unittest/unittest.gni")
 
 unittest("FuzzMutateTests") {
   deps = [
-    "//${llvm_root}llvm/lib/AsmParser",
-    "//${llvm_root}llvm/lib/FuzzMutate",
-    "//${llvm_root}llvm/lib/IR",
-    "//${llvm_root}llvm/lib/Support",
+    "//${llvm_build_root}/secondary/llvm/lib/AsmParser",
+    "//${llvm_build_root}/secondary/llvm/lib/FuzzMutate",
+    "//${llvm_build_root}/secondary/llvm/lib/IR",
+    "//${llvm_build_root}/secondary/llvm/lib/Support",
   ]
   sources = [
     "OperationsTest.cpp",

@@ -1,6 +1,6 @@
 import("//build_overrides/llvm.gni")
 
-import("//${llvm_root}third-party/unittest/unittest.gni")
+import("//${llvm_build_root}/secondary/third-party/unittest/unittest.gni")
 
 # FIXME: If we add -Wl,-z,nodelete to the global ldflags, we need to remove
 # it again for these tests (cf CMake).
@@ -34,8 +34,8 @@ unittest("DynamicLibraryTests") {
   deps = [
     ":PipSqueak",
     ":SecondLib",
-    "//${llvm_root}llvm/include/llvm/Config:config",
-    "//${llvm_root}llvm/lib/Support",
+    "//${llvm_build_root}/secondary/llvm/include/llvm/Config:config",
+    "//${llvm_build_root}/secondary/llvm/lib/Support",
   ]
   sources = [
     "DynamicLibraryTest.cpp",

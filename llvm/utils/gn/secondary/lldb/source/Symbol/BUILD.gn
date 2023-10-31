@@ -2,15 +2,15 @@ import("//build_overrides/llvm.gni")
 
 static_library("Symbol") {
   output_name = "lldbSymbol"
-  configs += [ "//${llvm_build_root}build:lldb_code" ]
+  configs += [ "//${llvm_build_root}/build:lldb_code" ]
   deps = [
-    "//${llvm_root}lldb/source/Core",
-    "//${llvm_root}lldb/source/Expression",
-    "//${llvm_root}lldb/source/Host",
+    "//${llvm_build_root}/secondary/lldb/source/Core",
+    "//${llvm_build_root}/secondary/lldb/source/Expression",
+    "//${llvm_build_root}/secondary/lldb/source/Host",
 
-    #"//${llvm_root}lldb/source/Target", # FIXME: Dependency cycle.
-    "//${llvm_root}lldb/source/Utility",
-    "//${llvm_root}llvm/lib/Support",
+    #"//${llvm_build_root}/secondary/lldb/source/Target", # FIXME: Dependency cycle.
+    "//${llvm_build_root}/secondary/lldb/source/Utility",
+    "//${llvm_build_root}/secondary/llvm/lib/Support",
   ]
   include_dirs = [ ".." ]  # FIXME: Reaches into Utility and Host internals.
   sources = [

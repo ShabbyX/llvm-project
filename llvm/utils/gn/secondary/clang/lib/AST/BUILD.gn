@@ -1,6 +1,6 @@
 import("//build_overrides/llvm.gni")
 
-import("//${llvm_root}clang/utils/TableGen/clang_tablegen.gni")
+import("//${llvm_build_root}/secondary/clang/utils/TableGen/clang_tablegen.gni")
 
 clang_tablegen("Opcodes") {
   visibility = [ ":AST" ]
@@ -11,44 +11,44 @@ clang_tablegen("Opcodes") {
 clang_tablegen("AttrDocTable") {
   visibility = [ ":AST" ]
   args = [ "-gen-clang-attr-doc-table" ]
-  td_file = "//${llvm_root}clang/include/clang/Basic/Attr.td"
+  td_file = "//${llvm_build_root}/secondary/clang/include/clang/Basic/Attr.td"
 }
 
 static_library("AST") {
   output_name = "clangAST"
-  configs += [ "//${llvm_build_root}build:clang_code" ]
+  configs += [ "//${llvm_build_root}/build:clang_code" ]
   deps = [
     ":AttrDocTable",
     ":Opcodes",
-    "//${llvm_root}clang/include/clang/AST:AttrImpl",
-    "//${llvm_root}clang/include/clang/AST:AttrNodeTraverse",
-    "//${llvm_root}clang/include/clang/AST:AttrTextNodeDump",
-    "//${llvm_root}clang/include/clang/AST:CommentCommandInfo",
-    "//${llvm_root}clang/include/clang/AST:CommentHTMLNamedCharacterReferences",
-    "//${llvm_root}clang/include/clang/AST:CommentHTMLTags",
-    "//${llvm_root}clang/include/clang/AST:CommentHTMLTagsProperties",
-    "//${llvm_root}clang/include/clang/AST:DeclNodes",
-    "//${llvm_root}clang/lib/Basic",
-    "//${llvm_root}clang/lib/Lex",
-    "//${llvm_root}llvm/lib/BinaryFormat",
-    "//${llvm_root}llvm/lib/Frontend/OpenMP",
-    "//${llvm_root}llvm/lib/Support",
-    "//${llvm_root}llvm/lib/TargetParser",
+    "//${llvm_build_root}/secondary/clang/include/clang/AST:AttrImpl",
+    "//${llvm_build_root}/secondary/clang/include/clang/AST:AttrNodeTraverse",
+    "//${llvm_build_root}/secondary/clang/include/clang/AST:AttrTextNodeDump",
+    "//${llvm_build_root}/secondary/clang/include/clang/AST:CommentCommandInfo",
+    "//${llvm_build_root}/secondary/clang/include/clang/AST:CommentHTMLNamedCharacterReferences",
+    "//${llvm_build_root}/secondary/clang/include/clang/AST:CommentHTMLTags",
+    "//${llvm_build_root}/secondary/clang/include/clang/AST:CommentHTMLTagsProperties",
+    "//${llvm_build_root}/secondary/clang/include/clang/AST:DeclNodes",
+    "//${llvm_build_root}/secondary/clang/lib/Basic",
+    "//${llvm_build_root}/secondary/clang/lib/Lex",
+    "//${llvm_build_root}/secondary/llvm/lib/BinaryFormat",
+    "//${llvm_build_root}/secondary/llvm/lib/Frontend/OpenMP",
+    "//${llvm_build_root}/secondary/llvm/lib/Support",
+    "//${llvm_build_root}/secondary/llvm/lib/TargetParser",
   ]
 
   # Generated files used in public headers should be in public_deps, the rest
   # in regular deps.
   public_deps = [
-    "//${llvm_root}clang/include/clang/AST:AbstractBasicReader",
-    "//${llvm_root}clang/include/clang/AST:AbstractBasicWriter",
-    "//${llvm_root}clang/include/clang/AST:AbstractTypeReader",
-    "//${llvm_root}clang/include/clang/AST:AbstractTypeWriter",
-    "//${llvm_root}clang/include/clang/AST:AttrVisitor",
-    "//${llvm_root}clang/include/clang/AST:Attrs",
-    "//${llvm_root}clang/include/clang/AST:CommentCommandList",
-    "//${llvm_root}clang/include/clang/AST:CommentNodes",
-    "//${llvm_root}clang/include/clang/AST:StmtNodes",
-    "//${llvm_root}clang/include/clang/AST:TypeNodes",
+    "//${llvm_build_root}/secondary/clang/include/clang/AST:AbstractBasicReader",
+    "//${llvm_build_root}/secondary/clang/include/clang/AST:AbstractBasicWriter",
+    "//${llvm_build_root}/secondary/clang/include/clang/AST:AbstractTypeReader",
+    "//${llvm_build_root}/secondary/clang/include/clang/AST:AbstractTypeWriter",
+    "//${llvm_build_root}/secondary/clang/include/clang/AST:AttrVisitor",
+    "//${llvm_build_root}/secondary/clang/include/clang/AST:Attrs",
+    "//${llvm_build_root}/secondary/clang/include/clang/AST:CommentCommandList",
+    "//${llvm_build_root}/secondary/clang/include/clang/AST:CommentNodes",
+    "//${llvm_build_root}/secondary/clang/include/clang/AST:StmtNodes",
+    "//${llvm_build_root}/secondary/clang/include/clang/AST:TypeNodes",
   ]
   sources = [
     "APValue.cpp",

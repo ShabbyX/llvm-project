@@ -1,9 +1,9 @@
 import("//build_overrides/llvm.gni")
 
-import("//${llvm_root}clang-tools-extra/clang-tidy/enable.gni")
-import("//${llvm_root}clang/lib/StaticAnalyzer/Frontend/enable.gni")
-import("//${llvm_root}llvm/triples.gni")
-import("//${llvm_build_root}build/write_cmake_config.gni")
+import("//${llvm_build_root}/secondary/clang-tools-extra/clang-tidy/enable.gni")
+import("//${llvm_build_root}/secondary/clang/lib/StaticAnalyzer/Frontend/enable.gni")
+import("//${llvm_build_root}/secondary/llvm/triples.gni")
+import("//${llvm_build_root}/build/write_cmake_config.gni")
 import("clang_tools_extra_lit_site_cfg_files.gni")
 
 template("write_lit_config") {
@@ -19,7 +19,7 @@ template("write_lit_config") {
       "LLVM_TARGET_TRIPLE=$llvm_target_triple",
     ]
     if (host_os == "win") {
-      # See comment for Windows solink in ${llvm_build_root}build/toolchain/BUILD.gn
+      # See comment for Windows solink in ${llvm_build_root}/build/toolchain/BUILD.gn
       values += [ "SHLIBDIR=" + rebase_path("$root_out_dir/bin") ]
     } else {
       values += [ "SHLIBDIR=" + rebase_path("$root_out_dir/lib") ]
@@ -30,7 +30,7 @@ template("write_lit_config") {
 
 write_lit_config("lit_site_cfg") {
   # Fully-qualified instead of relative for LIT_SITE_CFG_IN_HEADER.
-  input = "//${llvm_root}clang-tools-extra/test/lit.site.cfg.py.in"
+  input = "//${llvm_build_root}/secondary/clang-tools-extra/test/lit.site.cfg.py.in"
   output = clang_tools_extra_lit_site_cfg_file
 
   extra_values = [
@@ -60,7 +60,7 @@ write_lit_config("lit_site_cfg") {
 
 write_lit_config("lit_unit_site_cfg") {
   # Fully-qualified instead of relative for LIT_SITE_CFG_IN_HEADER.
-  input = "//${llvm_root}clang-tools-extra/test/Unit/lit.site.cfg.py.in"
+  input = "//${llvm_build_root}/secondary/clang-tools-extra/test/Unit/lit.site.cfg.py.in"
   output = clang_tools_extra_lit_unit_site_cfg_file
   extra_values = []
 }
@@ -72,27 +72,27 @@ group("test") {
   deps = [
     ":lit_site_cfg",
     ":lit_unit_site_cfg",
-    "//${llvm_root}clang-tools-extra/clang-apply-replacements/tool:clang-apply-replacements",
-    "//${llvm_root}clang-tools-extra/clang-change-namespace/tool:clang-change-namespace",
-    "//${llvm_root}clang-tools-extra/clang-doc/tool:clang-doc",
-    "//${llvm_root}clang-tools-extra/clang-include-fixer/find-all-symbols/tool:find-all-symbols",
-    "//${llvm_root}clang-tools-extra/clang-include-fixer/tool:clang-include-fixer",
-    "//${llvm_root}clang-tools-extra/clang-move/tool:clang-move",
-    "//${llvm_root}clang-tools-extra/clang-query/tool:clang-query",
-    "//${llvm_root}clang-tools-extra/clang-reorder-fields/tool:clang-reorder-fields",
-    "//${llvm_root}clang-tools-extra/clang-tidy/tool:clang-tidy",
-    "//${llvm_root}clang-tools-extra/modularize",
-    "//${llvm_root}clang-tools-extra/pp-trace",
-    "//${llvm_root}clang-tools-extra/unittests",
-    "//${llvm_root}clang/lib/Headers",
-    "//${llvm_root}clang/tools/c-index-test",
-    "//${llvm_root}clang/tools/clang-rename",
-    "//${llvm_root}clang/tools/driver:symlinks",
-    "//${llvm_root}llvm/tools/llvm-bcanalyzer",
-    "//${llvm_root}llvm/utils/FileCheck",
-    "//${llvm_root}llvm/utils/count",
-    "//${llvm_root}llvm/utils/llvm-lit",
-    "//${llvm_root}llvm/utils/not",
+    "//${llvm_build_root}/secondary/clang-tools-extra/clang-apply-replacements/tool:clang-apply-replacements",
+    "//${llvm_build_root}/secondary/clang-tools-extra/clang-change-namespace/tool:clang-change-namespace",
+    "//${llvm_build_root}/secondary/clang-tools-extra/clang-doc/tool:clang-doc",
+    "//${llvm_build_root}/secondary/clang-tools-extra/clang-include-fixer/find-all-symbols/tool:find-all-symbols",
+    "//${llvm_build_root}/secondary/clang-tools-extra/clang-include-fixer/tool:clang-include-fixer",
+    "//${llvm_build_root}/secondary/clang-tools-extra/clang-move/tool:clang-move",
+    "//${llvm_build_root}/secondary/clang-tools-extra/clang-query/tool:clang-query",
+    "//${llvm_build_root}/secondary/clang-tools-extra/clang-reorder-fields/tool:clang-reorder-fields",
+    "//${llvm_build_root}/secondary/clang-tools-extra/clang-tidy/tool:clang-tidy",
+    "//${llvm_build_root}/secondary/clang-tools-extra/modularize",
+    "//${llvm_build_root}/secondary/clang-tools-extra/pp-trace",
+    "//${llvm_build_root}/secondary/clang-tools-extra/unittests",
+    "//${llvm_build_root}/secondary/clang/lib/Headers",
+    "//${llvm_build_root}/secondary/clang/tools/c-index-test",
+    "//${llvm_build_root}/secondary/clang/tools/clang-rename",
+    "//${llvm_build_root}/secondary/clang/tools/driver:symlinks",
+    "//${llvm_build_root}/secondary/llvm/tools/llvm-bcanalyzer",
+    "//${llvm_build_root}/secondary/llvm/utils/FileCheck",
+    "//${llvm_build_root}/secondary/llvm/utils/count",
+    "//${llvm_build_root}/secondary/llvm/utils/llvm-lit",
+    "//${llvm_build_root}/secondary/llvm/utils/not",
   ]
   testonly = true
 }

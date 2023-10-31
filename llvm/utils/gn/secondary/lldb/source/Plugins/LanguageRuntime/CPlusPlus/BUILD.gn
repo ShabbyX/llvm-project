@@ -2,11 +2,11 @@ import("//build_overrides/llvm.gni")
 
 static_library("CPlusPlus") {
   output_name = "lldbPluginCPPRuntime"
-  configs += [ "//${llvm_build_root}build:lldb_code" ]
+  configs += [ "//${llvm_build_root}/build:lldb_code" ]
   deps = [
-    "//${llvm_root}lldb/source/Core",
-    "//${llvm_root}lldb/source/Symbol",
-    "//${llvm_root}lldb/source/Target",
+    "//${llvm_build_root}/secondary/lldb/source/Core",
+    "//${llvm_build_root}/secondary/lldb/source/Symbol",
+    "//${llvm_build_root}/secondary/lldb/source/Target",
   ]
   sources = [ "CPPLanguageRuntime.cpp" ]
 }

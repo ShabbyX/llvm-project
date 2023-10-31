@@ -1,17 +1,17 @@
 import("//build_overrides/llvm.gni")
 
 executable("clang-include-fixer") {
-  configs += [ "//${llvm_build_root}build:clang_code" ]
+  configs += [ "//${llvm_build_root}/build:clang_code" ]
   deps = [
-    "//${llvm_root}clang-tools-extra/clang-include-fixer",
-    "//${llvm_root}clang-tools-extra/clang-include-fixer/find-all-symbols",
-    "//${llvm_root}clang/lib/Basic",
-    "//${llvm_root}clang/lib/Format",
-    "//${llvm_root}clang/lib/Frontend",
-    "//${llvm_root}clang/lib/Rewrite",
-    "//${llvm_root}clang/lib/Serialization",
-    "//${llvm_root}clang/lib/Tooling",
-    "//${llvm_root}clang/lib/Tooling/Core",
+    "//${llvm_build_root}/secondary/clang-tools-extra/clang-include-fixer",
+    "//${llvm_build_root}/secondary/clang-tools-extra/clang-include-fixer/find-all-symbols",
+    "//${llvm_build_root}/secondary/clang/lib/Basic",
+    "//${llvm_build_root}/secondary/clang/lib/Format",
+    "//${llvm_build_root}/secondary/clang/lib/Frontend",
+    "//${llvm_build_root}/secondary/clang/lib/Rewrite",
+    "//${llvm_build_root}/secondary/clang/lib/Serialization",
+    "//${llvm_build_root}/secondary/clang/lib/Tooling",
+    "//${llvm_build_root}/secondary/clang/lib/Tooling/Core",
   ]
   include_dirs = [ ".." ]
   sources = [ "ClangIncludeFixer.cpp" ]

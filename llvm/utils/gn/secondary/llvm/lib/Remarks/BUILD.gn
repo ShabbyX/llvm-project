@@ -3,8 +3,8 @@ import("//build_overrides/llvm.gni")
 static_library("Remarks") {
   output_name = "LLVMRemarks"
   deps = [
-    "//${llvm_root}llvm/lib/Bitstream/Reader",
-    "//${llvm_root}llvm/lib/Support",
+    "//${llvm_build_root}/secondary/llvm/lib/Bitstream/Reader",
+    "//${llvm_build_root}/secondary/llvm/lib/Support",
   ]
 
   sources = [

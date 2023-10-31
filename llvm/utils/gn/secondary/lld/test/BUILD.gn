@@ -1,11 +1,11 @@
 import("//build_overrides/llvm.gni")
 
-import("//${llvm_root}llvm/lib/DebugInfo/PDB/enable_dia.gni")
-import("//${llvm_root}llvm/triples.gni")
-import("//${llvm_build_root}build/libs/xml/enable.gni")
-import("//${llvm_build_root}build/libs/zlib/enable.gni")
-import("//${llvm_build_root}build/write_cmake_config.gni")
-import("//${llvm_root}llvm/utils/llvm-lit/lit_path_function.gni")
+import("//${llvm_build_root}/secondary/llvm/lib/DebugInfo/PDB/enable_dia.gni")
+import("//${llvm_build_root}/secondary/llvm/triples.gni")
+import("//${llvm_build_root}/build/libs/xml/enable.gni")
+import("//${llvm_build_root}/build/libs/zlib/enable.gni")
+import("//${llvm_build_root}/build/write_cmake_config.gni")
+import("//${llvm_build_root}/secondary/llvm/utils/llvm-lit/lit_path_function.gni")
 import("lld_lit_site_cfg_files.gni")
 
 # The bits common to writing lit.site.cfg.py.in and Unit/lit.site.cfg.py.in.
@@ -22,7 +22,7 @@ template("write_lit_cfg") {
       "LLD_SOURCE_DIR=" + rebase_path("//lld", dir),
     ]
     if (host_os == "win") {
-      # See comment for Windows solink in ${llvm_build_root}build/toolchain/BUILD.gn
+      # See comment for Windows solink in ${llvm_build_root}/build/toolchain/BUILD.gn
       values += [ "SHLIBDIR=" + rebase_path("$root_out_dir/bin", dir) ]
     } else {
       values += [ "SHLIBDIR=" + rebase_path("$root_out_dir/lib", dir) ]
@@ -33,7 +33,7 @@ template("write_lit_cfg") {
 
 write_lit_cfg("lit_site_cfg") {
   # Fully-qualified instead of relative for LIT_SITE_CFG_IN_HEADER.
-  input = "//${llvm_root}lld/test/lit.site.cfg.py.in"
+  input = "//${llvm_build_root}/secondary/lld/test/lit.site.cfg.py.in"
   output = lld_lit_site_cfg_file
   dir = get_path_info(output, "dir")
 
@@ -106,7 +106,7 @@ write_lit_cfg("lit_site_cfg") {
 
 write_lit_cfg("lit_unit_site_cfg") {
   # Fully-qualified instead of relative for LIT_SITE_CFG_IN_HEADER.
-  input = "//${llvm_root}lld/test/Unit/lit.site.cfg.py.in"
+  input = "//${llvm_build_root}/secondary/lld/test/Unit/lit.site.cfg.py.in"
   output = lld_lit_unit_site_cfg_file
   extra_values = [ "LLVM_BUILD_MODE=." ]
 }
@@ -118,33 +118,33 @@ group("test") {
   deps = [
     ":lit_site_cfg",
     ":lit_unit_site_cfg",
-    "//${llvm_root}lld/tools/lld:symlinks",
-    "//${llvm_root}lld/unittests",
-    "//${llvm_root}llvm/tools/dsymutil",
-    "//${llvm_root}llvm/tools/llc",
-    "//${llvm_root}llvm/tools/llvm-ar:symlinks",
-    "//${llvm_root}llvm/tools/llvm-as",
-    "//${llvm_root}llvm/tools/llvm-bcanalyzer",
-    "//${llvm_root}llvm/tools/llvm-cvtres",
-    "//${llvm_root}llvm/tools/llvm-dis",
-    "//${llvm_root}llvm/tools/llvm-dwarfdump",
-    "//${llvm_root}llvm/tools/llvm-lipo:symlinks",
-    "//${llvm_root}llvm/tools/llvm-mc",
-    "//${llvm_root}llvm/tools/llvm-nm:symlinks",
-    "//${llvm_root}llvm/tools/llvm-objcopy:symlinks",
-    "//${llvm_root}llvm/tools/llvm-objdump:symlinks",
-    "//${llvm_root}llvm/tools/llvm-pdbutil",
-    "//${llvm_root}llvm/tools/llvm-profdata",
-    "//${llvm_root}llvm/tools/llvm-readobj:symlinks",
-    "//${llvm_root}llvm/tools/llvm-symbolizer:symlinks",
-    "//${llvm_root}llvm/tools/obj2yaml",
-    "//${llvm_root}llvm/tools/opt",
-    "//${llvm_root}llvm/tools/yaml2obj",
-    "//${llvm_root}llvm/utils/FileCheck",
-    "//${llvm_root}llvm/utils/count",
-    "//${llvm_root}llvm/utils/llvm-lit",
-    "//${llvm_root}llvm/utils/not",
-    "//${llvm_root}llvm/utils/split-file",
+    "//${llvm_build_root}/secondary/lld/tools/lld:symlinks",
+    "//${llvm_build_root}/secondary/lld/unittests",
+    "//${llvm_build_root}/secondary/llvm/tools/dsymutil",
+    "//${llvm_build_root}/secondary/llvm/tools/llc",
+    "//${llvm_build_root}/secondary/llvm/tools/llvm-ar:symlinks",
+    "//${llvm_build_root}/secondary/llvm/tools/llvm-as",
+    "//${llvm_build_root}/secondary/llvm/tools/llvm-bcanalyzer",
+    "//${llvm_build_root}/secondary/llvm/tools/llvm-cvtres",
+    "//${llvm_build_root}/secondary/llvm/tools/llvm-dis",
+    "//${llvm_build_root}/secondary/llvm/tools/llvm-dwarfdump",
+    "//${llvm_build_root}/secondary/llvm/tools/llvm-lipo:symlinks",
+    "//${llvm_build_root}/secondary/llvm/tools/llvm-mc",
+    "//${llvm_build_root}/secondary/llvm/tools/llvm-nm:symlinks",
+    "//${llvm_build_root}/secondary/llvm/tools/llvm-objcopy:symlinks",
+    "//${llvm_build_root}/secondary/llvm/tools/llvm-objdump:symlinks",
+    "//${llvm_build_root}/secondary/llvm/tools/llvm-pdbutil",
+    "//${llvm_build_root}/secondary/llvm/tools/llvm-profdata",
+    "//${llvm_build_root}/secondary/llvm/tools/llvm-readobj:symlinks",
+    "//${llvm_build_root}/secondary/llvm/tools/llvm-symbolizer:symlinks",
+    "//${llvm_build_root}/secondary/llvm/tools/obj2yaml",
+    "//${llvm_build_root}/secondary/llvm/tools/opt",
+    "//${llvm_build_root}/secondary/llvm/tools/yaml2obj",
+    "//${llvm_build_root}/secondary/llvm/utils/FileCheck",
+    "//${llvm_build_root}/secondary/llvm/utils/count",
+    "//${llvm_build_root}/secondary/llvm/utils/llvm-lit",
+    "//${llvm_build_root}/secondary/llvm/utils/not",
+    "//${llvm_build_root}/secondary/llvm/utils/split-file",
   ]
   testonly = true
 }

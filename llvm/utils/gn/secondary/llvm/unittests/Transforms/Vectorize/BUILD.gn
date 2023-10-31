@@ -1,14 +1,14 @@
 import("//build_overrides/llvm.gni")
 
-import("//${llvm_root}third-party/unittest/unittest.gni")
+import("//${llvm_build_root}/secondary/third-party/unittest/unittest.gni")
 
 unittest("VectorizeTests") {
   deps = [
-    "//${llvm_root}llvm/lib/Analysis",
-    "//${llvm_root}llvm/lib/AsmParser",
-    "//${llvm_root}llvm/lib/IR",
-    "//${llvm_root}llvm/lib/TargetParser",
-    "//${llvm_root}llvm/lib/Transforms/Vectorize",
+    "//${llvm_build_root}/secondary/llvm/lib/Analysis",
+    "//${llvm_build_root}/secondary/llvm/lib/AsmParser",
+    "//${llvm_build_root}/secondary/llvm/lib/IR",
+    "//${llvm_build_root}/secondary/llvm/lib/TargetParser",
+    "//${llvm_build_root}/secondary/llvm/lib/Transforms/Vectorize",
   ]
   sources = [
     "VPDomTreeTest.cpp",

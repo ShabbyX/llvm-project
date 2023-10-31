@@ -1,6 +1,6 @@
 import("//build_overrides/llvm.gni")
 
-import("//${llvm_root}llvm/utils/TableGen/tablegen.gni")
+import("//${llvm_build_root}/secondary/llvm/utils/TableGen/tablegen.gni")
 
 tablegen("HexagonGenAsmMatcher") {
   visibility = [ ":AsmParser" ]
@@ -12,10 +12,10 @@ static_library("AsmParser") {
   output_name = "LLVMHexagonAsmParser"
   deps = [
     ":HexagonGenAsmMatcher",
-    "//${llvm_root}llvm/lib/MC",
-    "//${llvm_root}llvm/lib/MC/MCParser",
-    "//${llvm_root}llvm/lib/Support",
-    "//${llvm_root}llvm/lib/Target/Hexagon/MCTargetDesc",
+    "//${llvm_build_root}/secondary/llvm/lib/MC",
+    "//${llvm_build_root}/secondary/llvm/lib/MC/MCParser",
+    "//${llvm_build_root}/secondary/llvm/lib/Support",
+    "//${llvm_build_root}/secondary/llvm/lib/Target/Hexagon/MCTargetDesc",
   ]
   include_dirs = [ ".." ]
   sources = [ "HexagonAsmParser.cpp" ]

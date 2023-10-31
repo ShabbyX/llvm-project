@@ -11,7 +11,7 @@ template("gen_decision_forest") {
   }
 
   action("${target_name}Cpp") {
-    script = "//${llvm_root}clang-tools-extra/clangd/quality/CompletionModelCodegen.py"
+    script = "//${llvm_build_root}/secondary/clang-tools-extra/clangd/quality/CompletionModelCodegen.py"
     outputs = [
       "$target_gen_dir/$filename.cpp",
       "$target_gen_dir/$filename.h",
@@ -38,7 +38,7 @@ template("gen_decision_forest") {
 
   source_set(target_name) {
     configs += [
-      "//${llvm_build_root}build:clang_code",
+      "//${llvm_build_root}/build:clang_code",
       ":${target_name}Config",
     ]
     deps = [ ":${target_name}Cpp" ] + extra_deps

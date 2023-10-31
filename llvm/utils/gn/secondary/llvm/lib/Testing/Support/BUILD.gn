@@ -3,8 +3,8 @@ import("//build_overrides/llvm.gni")
 static_library("Support") {
   output_name = "LLVMTestingSupport"
   deps = [
-    "//${llvm_root}llvm/lib/Support",
-    "//${llvm_root}third-party/unittest:gtest",
+    "//${llvm_build_root}/secondary/llvm/lib/Support",
+    "//${llvm_build_root}/secondary/third-party/unittest:gtest",
   ]
   sources = [
     "Error.cpp",

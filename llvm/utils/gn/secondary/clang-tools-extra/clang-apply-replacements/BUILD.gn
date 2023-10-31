@@ -2,14 +2,14 @@ import("//build_overrides/llvm.gni")
 
 static_library("clang-apply-replacements") {
   output_name = "clangApplyReplacements"
-  configs += [ "//${llvm_build_root}build:clang_code" ]
+  configs += [ "//${llvm_build_root}/build:clang_code" ]
   deps = [
-    "//${llvm_root}clang/lib/AST",
-    "//${llvm_root}clang/lib/Basic",
-    "//${llvm_root}clang/lib/Rewrite",
-    "//${llvm_root}clang/lib/Tooling/Core",
-    "//${llvm_root}clang/lib/Tooling/Refactoring",
-    "//${llvm_root}llvm/lib/Support",
+    "//${llvm_build_root}/secondary/clang/lib/AST",
+    "//${llvm_build_root}/secondary/clang/lib/Basic",
+    "//${llvm_build_root}/secondary/clang/lib/Rewrite",
+    "//${llvm_build_root}/secondary/clang/lib/Tooling/Core",
+    "//${llvm_build_root}/secondary/clang/lib/Tooling/Refactoring",
+    "//${llvm_build_root}/secondary/llvm/lib/Support",
   ]
   include_dirs = [ "include" ]
   sources = [ "lib/Tooling/ApplyReplacements.cpp" ]

@@ -2,13 +2,13 @@ import("//build_overrides/llvm.gni")
 
 static_library("Rewrite") {
   output_name = "clangRewrite"
-  configs += [ "//${llvm_build_root}build:clang_code" ]
+  configs += [ "//${llvm_build_root}/build:clang_code" ]
   configs += llvm_code_override_configs_append
   configs -= llvm_code_override_configs_remove
   deps = [
-    "//${llvm_root}clang/lib/Basic",
-    "//${llvm_root}clang/lib/Lex",
-    "//${llvm_root}llvm/lib/Support",
+    "//${llvm_build_root}/secondary/clang/lib/Basic",
+    "//${llvm_build_root}/secondary/clang/lib/Lex",
+    "//${llvm_build_root}/secondary/llvm/lib/Support",
   ]
   sources = [
     "DeltaTree.cpp",

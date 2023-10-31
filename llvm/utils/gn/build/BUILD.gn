@@ -1,10 +1,10 @@
 import("//build_overrides/llvm.gni")
 
-import("//${llvm_build_root}build/buildflags.gni")
-import("//${llvm_build_root}build/mac_sdk.gni")
-import("//${llvm_build_root}build/sysroot.gni")
-import("//${llvm_build_root}build/toolchain/compiler.gni")
-import("//${llvm_build_root}build/toolchain/target_flags.gni")
+import("//${llvm_build_root}/build/buildflags.gni")
+import("//${llvm_build_root}/build/mac_sdk.gni")
+import("//${llvm_build_root}/build/sysroot.gni")
+import("//${llvm_build_root}/build/toolchain/compiler.gni")
+import("//${llvm_build_root}/build/toolchain/target_flags.gni")
 
 declare_args() {
   # Whether to build everything with test coverage information.
@@ -465,7 +465,7 @@ config("thin_archive") {
 
 config("llvm_code") {
   include_dirs = [
-    "//${llvm_root}llvm/include",
+    "//${llvm_root}/llvm/include",
     "$root_gen_dir/${llvm_root}/llvm/include",
   ]
   if (current_os != "win") {
@@ -475,7 +475,7 @@ config("llvm_code") {
 
 config("lld_code") {
   include_dirs = [
-    "//${llvm_root}lld/include",
+    "//${llvm_root}/lld/include",
     "$root_gen_dir/${llvm_root}/lld/include",
   ]
 }
@@ -485,20 +485,20 @@ config("clang_code") {
     cflags = [ "-fno-strict-aliasing" ]
   }
   include_dirs = [
-    "//${llvm_root}clang/include",
+    "//${llvm_root}/clang/include",
     "$root_gen_dir/${llvm_root}/clang/include",
   ]
 }
 
 config("bolt_code") {
   include_dirs = [
-    "//${llvm_root}bolt/include",
+    "//${llvm_root}/bolt/include",
     "$root_gen_dir/${llvm_root}/bolt/include",
   ]
 }
 
 config("crt_code") {
-  include_dirs = [ "//${llvm_root}compiler-rt/lib" ]
+  include_dirs = [ "//${llvm_root}/compiler-rt/lib" ]
   cflags = [
     "-fno-builtin",
     "-gline-tables-only",
@@ -530,7 +530,7 @@ config("lldb_code") {
     cflags = [ "-fno-strict-aliasing" ]
   }
   include_dirs = [
-    "//${llvm_root}lldb/include",
+    "//${llvm_root}/lldb/include",
     "$root_gen_dir/${llvm_root}/lldb/include",
   ]
 }

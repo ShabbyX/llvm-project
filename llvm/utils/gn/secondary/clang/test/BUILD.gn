@@ -1,13 +1,13 @@
 import("//build_overrides/llvm.gni")
 
-import("//${llvm_root}clang/lib/ARCMigrate/enable.gni")
-import("//${llvm_root}clang/lib/StaticAnalyzer/Frontend/enable.gni")
-import("//${llvm_root}llvm/lib/Target/targets.gni")
-import("//${llvm_root}llvm/triples.gni")
-import("//${llvm_build_root}build/libs/pthread/enable.gni")
-import("//${llvm_build_root}build/libs/zlib/enable.gni")
-import("//${llvm_build_root}build/write_cmake_config.gni")
-import("//${llvm_root}llvm/utils/llvm-lit/lit_path_function.gni")
+import("//${llvm_build_root}/secondary/clang/lib/ARCMigrate/enable.gni")
+import("//${llvm_build_root}/secondary/clang/lib/StaticAnalyzer/Frontend/enable.gni")
+import("//${llvm_build_root}/secondary/llvm/lib/Target/targets.gni")
+import("//${llvm_build_root}/secondary/llvm/triples.gni")
+import("//${llvm_build_root}/build/libs/pthread/enable.gni")
+import("//${llvm_build_root}/build/libs/zlib/enable.gni")
+import("//${llvm_build_root}/build/write_cmake_config.gni")
+import("//${llvm_build_root}/secondary/llvm/utils/llvm-lit/lit_path_function.gni")
 import("clang_lit_site_cfg_files.gni")
 
 template("write_lit_config") {
@@ -29,7 +29,7 @@ template("write_lit_config") {
       "LLVM_TARGET_TRIPLE=$llvm_target_triple",
     ]
     if (host_os == "win") {
-      # See comment for Windows solink in ${llvm_build_root}build/toolchain/BUILD.gn
+      # See comment for Windows solink in ${llvm_build_root}/build/toolchain/BUILD.gn
       values += [ "SHLIBDIR=" + rebase_path("$root_out_dir/bin", dir) ]
     } else {
       values += [ "SHLIBDIR=" + rebase_path("$root_out_dir/lib", dir) ]
@@ -40,7 +40,7 @@ template("write_lit_config") {
 
 write_lit_config("lit_site_cfg") {
   # Fully-qualified instead of relative for LIT_SITE_CFG_IN_HEADER.
-  input = "//${llvm_root}clang/test/lit.site.cfg.py.in"
+  input = "//${llvm_build_root}/secondary/clang/test/lit.site.cfg.py.in"
   output = clang_lit_site_cfg_file
   dir = get_path_info(output, "dir")
   extra_values = [
@@ -112,7 +112,7 @@ write_lit_config("lit_site_cfg") {
 
   if (host_os == "win") {
     extra_values += [
-      # See comment for Windows solink in ${llvm_build_root}build/toolchain/BUILD.gn
+      # See comment for Windows solink in ${llvm_build_root}/build/toolchain/BUILD.gn
       "CMAKE_LIBRARY_OUTPUT_DIRECTORY=" + rebase_path("$root_out_dir/bin", dir),
       "LLVM_LIT_ERRC_MESSAGES=no such file or directory;is a directory;" +
           "invalid argument;permission denied",
@@ -133,7 +133,7 @@ write_lit_config("lit_site_cfg") {
 
 write_lit_config("lit_unit_site_cfg") {
   # Fully-qualified instead of relative for LIT_SITE_CFG_IN_HEADER.
-  input = "//${llvm_root}clang/test/Unit/lit.site.cfg.py.in"
+  input = "//${llvm_build_root}/secondary/clang/test/Unit/lit.site.cfg.py.in"
   output = clang_lit_unit_site_cfg_file
   extra_values = [ "LLVM_BUILD_MODE=." ]
 }
@@ -145,62 +145,62 @@ group("test") {
   deps = [
     ":lit_site_cfg",
     ":lit_unit_site_cfg",
-    "//${llvm_root}clang/lib/Headers",
-    "//${llvm_root}clang/tools/apinotes-test",
-    "//${llvm_root}clang/tools/c-index-test",
-    "//${llvm_root}clang/tools/clang-diff",
-    "//${llvm_root}clang/tools/clang-format",
-    "//${llvm_root}clang/tools/clang-fuzzer/dictionary:clang-fuzzer-dictionary",
-    "//${llvm_root}clang/tools/clang-import-test",
-    "//${llvm_root}clang/tools/clang-offload-bundler",
-    "//${llvm_root}clang/tools/clang-refactor",
-    "//${llvm_root}clang/tools/clang-rename",
-    "//${llvm_root}clang/tools/clang-repl",
-    "//${llvm_root}clang/tools/clang-scan-deps",
-    "//${llvm_root}clang/tools/diagtool",
-    "//${llvm_root}clang/tools/driver:symlinks",
-    "//${llvm_root}clang/unittests",
-    "//${llvm_root}clang/utils/TableGen:clang-tblgen",
-    "//${llvm_root}clang/utils/hmaptool",
-    "//${llvm_root}llvm/tools/llc",
-    "//${llvm_root}llvm/tools/llvm-ar:symlinks",
-    "//${llvm_root}llvm/tools/llvm-as",
-    "//${llvm_root}llvm/tools/llvm-bcanalyzer",
-    "//${llvm_root}llvm/tools/llvm-cat",
-    "//${llvm_root}llvm/tools/llvm-config",
-    "//${llvm_root}llvm/tools/llvm-cxxfilt",
-    "//${llvm_root}llvm/tools/llvm-dis",
-    "//${llvm_root}llvm/tools/llvm-dwarfdump",
-    "//${llvm_root}llvm/tools/llvm-ifs",
-    "//${llvm_root}llvm/tools/llvm-lto",
-    "//${llvm_root}llvm/tools/llvm-lto2",
-    "//${llvm_root}llvm/tools/llvm-modextract",
-    "//${llvm_root}llvm/tools/llvm-nm:symlinks",
-    "//${llvm_root}llvm/tools/llvm-objcopy:symlinks",
-    "//${llvm_root}llvm/tools/llvm-objdump:symlinks",
-    "//${llvm_root}llvm/tools/llvm-pdbutil",
-    "//${llvm_root}llvm/tools/llvm-profdata",
-    "//${llvm_root}llvm/tools/llvm-rc:symlinks",
-    "//${llvm_root}llvm/tools/llvm-readobj:symlinks",
-    "//${llvm_root}llvm/tools/llvm-symbolizer:symlinks",
-    "//${llvm_root}llvm/tools/opt",
-    "//${llvm_root}llvm/tools/yaml2obj",
-    "//${llvm_root}llvm/utils/FileCheck",
-    "//${llvm_root}llvm/utils/count",
-    "//${llvm_root}llvm/utils/llvm-lit",
-    "//${llvm_root}llvm/utils/not",
-    "//${llvm_root}llvm/utils/split-file",
+    "//${llvm_build_root}/secondary/clang/lib/Headers",
+    "//${llvm_build_root}/secondary/clang/tools/apinotes-test",
+    "//${llvm_build_root}/secondary/clang/tools/c-index-test",
+    "//${llvm_build_root}/secondary/clang/tools/clang-diff",
+    "//${llvm_build_root}/secondary/clang/tools/clang-format",
+    "//${llvm_build_root}/secondary/clang/tools/clang-fuzzer/dictionary:clang-fuzzer-dictionary",
+    "//${llvm_build_root}/secondary/clang/tools/clang-import-test",
+    "//${llvm_build_root}/secondary/clang/tools/clang-offload-bundler",
+    "//${llvm_build_root}/secondary/clang/tools/clang-refactor",
+    "//${llvm_build_root}/secondary/clang/tools/clang-rename",
+    "//${llvm_build_root}/secondary/clang/tools/clang-repl",
+    "//${llvm_build_root}/secondary/clang/tools/clang-scan-deps",
+    "//${llvm_build_root}/secondary/clang/tools/diagtool",
+    "//${llvm_build_root}/secondary/clang/tools/driver:symlinks",
+    "//${llvm_build_root}/secondary/clang/unittests",
+    "//${llvm_build_root}/secondary/clang/utils/TableGen:clang-tblgen",
+    "//${llvm_build_root}/secondary/clang/utils/hmaptool",
+    "//${llvm_build_root}/secondary/llvm/tools/llc",
+    "//${llvm_build_root}/secondary/llvm/tools/llvm-ar:symlinks",
+    "//${llvm_build_root}/secondary/llvm/tools/llvm-as",
+    "//${llvm_build_root}/secondary/llvm/tools/llvm-bcanalyzer",
+    "//${llvm_build_root}/secondary/llvm/tools/llvm-cat",
+    "//${llvm_build_root}/secondary/llvm/tools/llvm-config",
+    "//${llvm_build_root}/secondary/llvm/tools/llvm-cxxfilt",
+    "//${llvm_build_root}/secondary/llvm/tools/llvm-dis",
+    "//${llvm_build_root}/secondary/llvm/tools/llvm-dwarfdump",
+    "//${llvm_build_root}/secondary/llvm/tools/llvm-ifs",
+    "//${llvm_build_root}/secondary/llvm/tools/llvm-lto",
+    "//${llvm_build_root}/secondary/llvm/tools/llvm-lto2",
+    "//${llvm_build_root}/secondary/llvm/tools/llvm-modextract",
+    "//${llvm_build_root}/secondary/llvm/tools/llvm-nm:symlinks",
+    "//${llvm_build_root}/secondary/llvm/tools/llvm-objcopy:symlinks",
+    "//${llvm_build_root}/secondary/llvm/tools/llvm-objdump:symlinks",
+    "//${llvm_build_root}/secondary/llvm/tools/llvm-pdbutil",
+    "//${llvm_build_root}/secondary/llvm/tools/llvm-profdata",
+    "//${llvm_build_root}/secondary/llvm/tools/llvm-rc:symlinks",
+    "//${llvm_build_root}/secondary/llvm/tools/llvm-readobj:symlinks",
+    "//${llvm_build_root}/secondary/llvm/tools/llvm-symbolizer:symlinks",
+    "//${llvm_build_root}/secondary/llvm/tools/opt",
+    "//${llvm_build_root}/secondary/llvm/tools/yaml2obj",
+    "//${llvm_build_root}/secondary/llvm/utils/FileCheck",
+    "//${llvm_build_root}/secondary/llvm/utils/count",
+    "//${llvm_build_root}/secondary/llvm/utils/llvm-lit",
+    "//${llvm_build_root}/secondary/llvm/utils/not",
+    "//${llvm_build_root}/secondary/llvm/utils/split-file",
   ]
   if (clang_enable_arcmt) {
     deps += [
-      "//${llvm_root}clang/tools/arcmt-test",
-      "//${llvm_root}clang/tools/c-arcmt-test",
+      "//${llvm_build_root}/secondary/clang/tools/arcmt-test",
+      "//${llvm_build_root}/secondary/clang/tools/c-arcmt-test",
     ]
   }
   if (clang_enable_static_analyzer) {
     deps += [
-      "//${llvm_root}clang/tools/clang-check",
-      "//${llvm_root}clang/tools/clang-extdef-mapping",
+      "//${llvm_build_root}/secondary/clang/tools/clang-check",
+      "//${llvm_build_root}/secondary/clang/tools/clang-extdef-mapping",
     ]
   }
 

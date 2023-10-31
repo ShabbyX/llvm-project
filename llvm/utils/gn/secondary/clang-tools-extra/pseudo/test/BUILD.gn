@@ -1,7 +1,7 @@
 import("//build_overrides/llvm.gni")
 
-import("//${llvm_root}llvm/triples.gni")
-import("//${llvm_build_root}build/write_cmake_config.gni")
+import("//${llvm_build_root}/secondary/llvm/triples.gni")
+import("//${llvm_build_root}/build/write_cmake_config.gni")
 import("clang_pseudo_lit_site_cfg_files.gni")
 
 template("write_lit_config") {
@@ -18,15 +18,15 @@ template("write_lit_config") {
 
 write_lit_config("lit_site_cfg") {
   # Fully-qualified instead of relative for LIT_SITE_CFG_IN_HEADER.
-  input = "//${llvm_root}clang-tools-extra/pseudo/test/lit.site.cfg.py.in"
+  input = "//${llvm_build_root}/secondary/clang-tools-extra/pseudo/test/lit.site.cfg.py.in"
   output = clang_pseudo_lit_site_cfg_file
 
   extra_values = [
     "CMAKE_CURRENT_BINARY_DIR=" +
-        rebase_path(get_label_info("//${llvm_root}clang-tools-extra/pseudo/test",
+        rebase_path(get_label_info("//${llvm_build_root}/secondary/clang-tools-extra/pseudo/test",
                                    "target_out_dir")),
     "CMAKE_CURRENT_SOURCE_DIR=" +
-        rebase_path("//${llvm_root}clang-tools-extra/pseudo/test"),
+        rebase_path("//${llvm_build_root}/secondary/clang-tools-extra/pseudo/test"),
 
     "CURRENT_TOOLS_DIR=",
     "LLVM_LIT_TOOLS_DIR=",  # Intentionally empty, matches cmake build.
@@ -38,17 +38,17 @@ write_lit_config("lit_site_cfg") {
 
 write_lit_config("lit_unit_site_cfg") {
   # Fully-qualified instead of relative for LIT_SITE_CFG_IN_HEADER.
-  input = "//${llvm_root}clang-tools-extra/pseudo/test/Unit/lit.site.cfg.py.in"
+  input = "//${llvm_build_root}/secondary/clang-tools-extra/pseudo/test/Unit/lit.site.cfg.py.in"
   output = clang_pseudo_lit_unit_site_cfg_file
   extra_values = [
     "CMAKE_CURRENT_BINARY_DIR=" +
-        rebase_path(get_label_info("//${llvm_root}clang-tools-extra/pseudo/unittests",
+        rebase_path(get_label_info("//${llvm_build_root}/secondary/clang-tools-extra/pseudo/unittests",
                                    "target_out_dir")),
     "CMAKE_CURRENT_SOURCE_DIR=" +
-        rebase_path("//${llvm_root}clang-tools-extra/pseudo/test"),
+        rebase_path("//${llvm_build_root}/secondary/clang-tools-extra/pseudo/test"),
   ]
   if (host_os == "win") {
-    # See comment for Windows solink in ${llvm_build_root}build/toolchain/BUILD.gn
+    # See comment for Windows solink in ${llvm_build_root}/build/toolchain/BUILD.gn
     extra_values += [ "SHLIBDIR=" + rebase_path("$root_out_dir/bin") ]
   } else {
     extra_values += [ "SHLIBDIR=" + rebase_path("$root_out_dir/lib") ]
@@ -62,11 +62,11 @@ group("test") {
   deps = [
     ":lit_site_cfg",
     ":lit_unit_site_cfg",
-    "//${llvm_root}clang-tools-extra/pseudo/tool:clang-pseudo",
-    "//${llvm_root}clang-tools-extra/pseudo/unittests:ClangPseudoTests",
-    "//${llvm_root}llvm/utils/FileCheck",
-    "//${llvm_root}llvm/utils/llvm-lit",
-    "//${llvm_root}llvm/utils/not",
+    "//${llvm_build_root}/secondary/clang-tools-extra/pseudo/tool:clang-pseudo",
+    "//${llvm_build_root}/secondary/clang-tools-extra/pseudo/unittests:ClangPseudoTests",
+    "//${llvm_build_root}/secondary/llvm/utils/FileCheck",
+    "//${llvm_build_root}/secondary/llvm/utils/llvm-lit",
+    "//${llvm_build_root}/secondary/llvm/utils/not",
   ]
   testonly = true
 }

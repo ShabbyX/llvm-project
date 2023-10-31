@@ -5,19 +5,19 @@ import("//build_overrides/llvm.gni")
 # Built as a source_set to make sure the linker does not remove global
 # constructors that register individual tweaks in a global registry.
 source_set("tweaks") {
-  configs += [ "//${llvm_build_root}build:clang_code" ]
+  configs += [ "//${llvm_build_root}/build:clang_code" ]
   deps = [
-    "//${llvm_root}clang-tools-extra/clangd",
-    "//${llvm_root}clang-tools-extra/clangd/support",
-    "//${llvm_root}clang/lib/AST",
-    "//${llvm_root}clang/lib/Tooling/Core",
-    "//${llvm_root}llvm/lib/Support",
+    "//${llvm_build_root}/secondary/clang-tools-extra/clangd",
+    "//${llvm_build_root}/secondary/clang-tools-extra/clangd/support",
+    "//${llvm_build_root}/secondary/clang/lib/AST",
+    "//${llvm_build_root}/secondary/clang/lib/Tooling/Core",
+    "//${llvm_build_root}/secondary/llvm/lib/Support",
   ]
   include_dirs = [
     "../..",
 
     # For "clang-include-cleaner/..." includes.
-    "//${llvm_root}clang-tools-extra/include-cleaner/include",
+    "//${llvm_build_root}/secondary/clang-tools-extra/include-cleaner/include",
   ]
   sources = [
     "AddUsing.cpp",
